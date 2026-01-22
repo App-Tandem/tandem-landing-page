@@ -28,8 +28,30 @@ body::-webkit-scrollbar{
   height: 0;
 }
 
-/* Put background on html so it stays visible during iOS overscroll bounce */
+/* IMPORTANT:
+   - We DO NOT disable overscroll bounce.
+   - Instead, we paint the background on a fixed layer that extends beyond the viewport.
+*/
 html{
+  background: var(--bg);
+}
+
+body{
+  margin: 0;
+  font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
+  color: var(--text);
+  background: transparent;
+  position: relative; /* for stacking context */
+}
+
+/* Extended fixed background layer (prevents ugly blank on overscroll) */
+body::before{
+  content: "";
+  position: fixed;
+  /* Extend beyond viewport so scroll-bounce still shows background */
+  inset: -400px;
+  z-index: -1;
+
   background:
     radial-gradient(900px 500px at 12% 10%, var(--washA), transparent 60%),
     radial-gradient(900px 500px at 88% 16%, var(--washB), transparent 60%),
@@ -38,18 +60,6 @@ html{
 
   background-repeat: no-repeat;
   background-size: cover;
-  min-height: 100%;
-
-  /* reduce overscroll weirdness on modern browsers */
-  overscroll-behavior: none;
-}
-
-body{
-  margin: 0;
-  font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
-  color: var(--text);
-  background: transparent; /* show html background through */
-  overscroll-behavior: none;
 }
 
 a{ color: inherit; text-decoration: none; }
@@ -152,10 +162,6 @@ a{ color: inherit; text-decoration: none; }
   padding-left: 4px;
 }
 
-/* Critical mobile fixes:
-   - min-width: 0 so input can shrink properly
-   - flex: 1 so it takes remaining space
-*/
 .field input{
   border: none;
   outline: none;
@@ -171,7 +177,7 @@ a{ color: inherit; text-decoration: none; }
 
 .btn{
   flex: 0 0 auto;
-  flex-shrink: 0;            /* prevents “empty” button on small screens */
+  flex-shrink: 0;
 
   border: 1px solid rgba(15,23,42,0.14);
   border-radius: 12px;
@@ -187,7 +193,7 @@ a{ color: inherit; text-decoration: none; }
   cursor: pointer;
   white-space: nowrap;
 
-  -webkit-appearance: none;  /* iOS Safari consistency */
+  -webkit-appearance: none;
   appearance: none;
 
   transition: transform .12s ease, box-shadow .12s ease, background .12s ease;
