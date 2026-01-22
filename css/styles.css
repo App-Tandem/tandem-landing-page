@@ -4,7 +4,6 @@
   --muted: #5b6474;
   --border: rgba(15,23,42,0.12);
 
-  /* soft brand-ish wash */
   --washA: rgba(255,179,107,0.18);
   --washB: rgba(184,107,255,0.14);
   --washC: rgba(79,212,255,0.14);
@@ -49,22 +48,24 @@ a{ color: inherit; text-decoration: none; }
 .brand{
   display: inline-flex;
   align-items: center;
-  gap: 10px;
+  gap: 12px;
 }
 
+/* ✅ Bigger logo */
 .brand img{
-  width: 38px;
-  height: 38px;
-  border-radius: 14px;
+  width: 56px;
+  height: 56px;
+  border-radius: 18px;
   object-fit: contain;
   border: 1px solid var(--border);
   background: rgba(255,255,255,0.7);
-  padding: 6px;
+  padding: 8px;
 }
 
 .brandText{
   font-weight: 700;
   letter-spacing: -0.2px;
+  font-size: 16px;
 }
 
 /* Hero */
@@ -86,7 +87,7 @@ a{ color: inherit; text-decoration: none; }
 
 .sub{
   margin: 14px 0 0;
-  max-width: 58ch;
+  max-width: 62ch;
   color: var(--muted);
   font-size: 16px;
   line-height: 1.55;
@@ -94,65 +95,53 @@ a{ color: inherit; text-decoration: none; }
 
 .waitlist{
   margin-top: 18px;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-  align-items: center;
 }
 
+/* ✅ Input + button in one row */
 .field{
-  display: inline-flex;
+  display: flex;
   align-items: center;
   gap: 10px;
   border: 1px solid var(--border);
   border-radius: 14px;
-  padding: 12px 14px;
+  padding: 10px 10px;
   background: rgba(255,255,255,0.85);
-  min-width: min(520px, 100%);
-  flex: 1 1 360px;
+  width: min(560px, 100%);
 }
 
-.icon{
-  opacity: 0.7;
-}
+.icon{ opacity: 0.7; padding-left: 4px; }
 
 .field input{
   border: none;
   outline: none;
   background: transparent;
-  width: 100%;
+  flex: 1;
+  min-width: 0;
   font-size: 14px;
   color: var(--text);
+  padding: 8px 6px;
 }
 
 .btn{
-  border: 1px solid var(--border);
-  border-radius: 14px;
-  padding: 12px 14px;
+  border: 1px solid rgba(15,23,42,0.14);
+  border-radius: 12px;
+  padding: 10px 12px;
   font-weight: 700;
   font-size: 14px;
   cursor: pointer;
-  background: rgba(255,255,255,0.85);
+  background: rgba(255,255,255,0.95);
   transition: transform .12s ease, box-shadow .12s ease, background .12s ease;
   white-space: nowrap;
 }
 
 .btn:hover{
   transform: translateY(-1px);
-  box-shadow: 0 16px 40px rgba(15,23,42,0.12);
-  background: rgba(255,255,255,0.95);
+  box-shadow: 0 16px 40px rgba(15,23,42,0.10);
 }
 
 .status{
-  flex-basis: 100%;
   min-height: 18px;
-  margin-top: 6px;
-  color: var(--muted);
-  font-size: 13px;
-}
-
-.fineprint{
-  margin: 10px 0 0;
+  margin-top: 10px;
   color: var(--muted);
   font-size: 13px;
 }
@@ -240,11 +229,11 @@ a{ color: inherit; text-decoration: none; }
     grid-template-columns: 1fr;
     gap: 18px;
   }
-  .phone{
-    width: min(420px, 100%);
-  }
+  .phone{ width: min(420px, 100%); }
 }
 
 @media (max-width: 520px){
   .claim{ letter-spacing: -1.2px; }
+  .field{ padding: 10px; }
+  .btn{ padding: 10px 10px; }
 }

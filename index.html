@@ -4,10 +4,10 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Tandem — Couples Organizer</title>
-  <meta name="description" content="Tandem is a couples organizer to stay in sync without the chaos." />
+  <meta name="description" content="Organize your relationship better with Tandem." />
 
   <meta property="og:title" content="Tandem — Couples Organizer" />
-  <meta property="og:description" content="Stay in sync. Plan like a team." />
+  <meta property="og:description" content="Organize your relationship better with Tandem." />
   <meta property="og:type" content="website" />
 
   <link rel="icon" href="assets/logo.png" />
@@ -26,34 +26,36 @@
     <main class="hero">
       <section class="heroLeft">
         <h1 class="claim">
-          Stay in sync.<br />
-          Plan like a team.
+          Organize your relationship better<br />
+          with Tandem.
         </h1>
 
         <p class="sub">
-          Tandem is a couples organizer for shared plans, reminders, and the little things you don’t want to forget.
+          Tandem helps you stay on top of todos, calendar events, and even finances with your partner.
         </p>
 
-        <!-- WAITLIST FORM -->
-        <!-- Replace action with your Formspree endpoint -->
-        <form id="waitlist" class="waitlist" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
-          <label class="field" aria-label="Email address">
+        <!-- WAITLIST FORM (Google Sheets via Apps Script) -->
+        <form id="waitlist" class="waitlist" autocomplete="on">
+          <div class="field">
             <span class="icon" aria-hidden="true">✉️</span>
-            <input required type="email" name="email" placeholder="Enter your email for the waitlist" autocomplete="email" />
-          </label>
-
-          <button class="btn" type="submit">Join waitlist</button>
+            <input
+              id="email"
+              required
+              type="email"
+              name="email"
+              placeholder="Enter your email for the waitlist"
+              autocomplete="email"
+            />
+            <button class="btn" type="submit">Join waitlist</button>
+          </div>
 
           <div class="status" id="status" role="status" aria-live="polite"></div>
         </form>
-
-        <p class="fineprint">No spam — just launch + a couple updates.</p>
       </section>
 
       <section class="heroRight" aria-label="Mobile video preview placeholder">
         <div class="phone">
           <div class="videoPlaceholder">
-            <!-- Replace this block with a real <video> later -->
             <div class="play">
               <div class="triangle" aria-hidden="true"></div>
             </div>
