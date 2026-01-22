@@ -34,10 +34,13 @@
           Tandem helps you stay on top of todos, calendar events, and even finances with your partner.
         </p>
 
-        <!-- WAITLIST FORM (Google Sheets via Apps Script) -->
         <form id="waitlist" class="waitlist" autocomplete="on">
-          <div class="field">
+          <!-- Honeypot (optional anti-bot). Hidden via CSS. -->
+          <input type="text" name="website" id="website" tabindex="-1" autocomplete="off" aria-hidden="true" class="hp" />
+
+          <div class="field" aria-label="Join waitlist">
             <span class="icon" aria-hidden="true">✉️</span>
+
             <input
               id="email"
               required
@@ -46,6 +49,7 @@
               placeholder="Enter your email for the waitlist"
               autocomplete="email"
             />
+
             <button class="btn" type="submit">Join waitlist</button>
           </div>
 
