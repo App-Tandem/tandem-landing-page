@@ -3,11 +3,11 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Tandem — Couples Organizer</title>
-  <meta name="description" content="Make your partner happy - with Tandem." />
+  <title>Tandem — Couples Organizer App</title>
+  <meta name="description" content="Make your partner happy - with Tandem. Organize todos, calendar events, and finances together." />
 
   <meta property="og:title" content="Tandem — Couples Organizer" />
-  <meta property="og:description" content="Make your partner happy - with Tandem." />
+  <meta property="og:description" content="Make your partner happy - with Tandem. Organize todos, calendar events, and finances together." />
   <meta property="og:type" content="website" />
 
   <link rel="icon" href="assets/logo.png" />
@@ -17,57 +17,186 @@
 <body>
   <div class="wrap">
     <header class="header">
-      <a class="brand" href="#">
+      <a class="brand" href="#hero">
         <img src="assets/logo.png" alt="Tandem logo" />
         <span class="brandText">Tandem</span>
       </a>
+      <nav class="headerNav">
+        <a href="#features">Features</a>
+        <a href="#how-it-works">How It Works</a>
+        <a href="#download">Download</a>
+      </nav>
     </header>
 
-    <main class="hero">
+    <!-- Hero Section -->
+    <main class="hero" id="hero">
       <section class="heroLeft">
         <h1 class="claim">
-          Make your partner happy<br />
-          - with Tandem.
+          Make your partner happy.<br />
+          Now available.
         </h1>
 
         <p class="sub">
-          Tandem is a mobile app (in development) that helps you stay on top of todos, calendar events, and even finances with your partner.
+          Tandem helps you and your partner stay organized together. Manage shared todos, calendar events, and finances—all in one place.
         </p>
 
-        <form id="waitlist" class="waitlist" autocomplete="on">
-          <!-- Honeypot (optional anti-bot). Hidden via CSS. -->
-          <input type="text" name="website" id="website" tabindex="-1" autocomplete="off" aria-hidden="true" class="hp" />
-
-          <div class="field" aria-label="Join waitlist">
-            <span class="icon" aria-hidden="true">✉️</span>
-
-            <input
-              id="email"
-              required
-              type="email"
-              name="email"
-              placeholder="Enter your email for the waitlist"
-              autocomplete="email"
-            />
-
-            <button class="btn" type="submit">Join waitlist</button>
-          </div>
-
-          <div class="status" id="status" role="status" aria-live="polite"></div>
-        </form>
+        <div class="downloadButtons">
+          <a href="https://apps.apple.com" class="btn btnPrimary" target="_blank" rel="noopener noreferrer">
+            <span class="icon">🍎</span>
+            App Store
+          </a>
+          <a href="https://play.google.com" class="btn btnSecondary" target="_blank" rel="noopener noreferrer">
+            <span class="icon">▶️</span>
+            Google Play
+          </a>
+        </div>
       </section>
 
-      <section class="heroRight" aria-label="Mobile video preview placeholder">
+      <section class="heroRight" aria-label="App preview">
         <div class="phone">
-          <div class="videoPlaceholder">
-            <div class="play">
-              <div class="triangle" aria-hidden="true"></div>
-            </div>
-            <p class="videoLabel">Video preview</p>
+          <div class="phonePlaceholder">
+            <p>App Preview</p>
           </div>
         </div>
       </section>
     </main>
+
+    <!-- Features Section -->
+    <section class="features" id="features">
+      <div class="featuresContainer">
+        <div class="sectionHeader">
+          <h2>Powerful Features for Couples</h2>
+          <p>Everything you need to stay organized together</p>
+        </div>
+
+        <div class="featureGrid">
+          <div class="featureCard">
+            <div class="featureIcon">📋</div>
+            <h3>Shared Todos</h3>
+            <p>Create and manage tasks together. Never forget what matters most to you both.</p>
+          </div>
+
+          <div class="featureCard">
+            <div class="featureIcon">📅</div>
+            <h3>Shared Calendar</h3>
+            <p>Coordinate your schedules and never miss important dates. Stay perfectly in sync.</p>
+          </div>
+
+          <div class="featureCard">
+            <div class="featureIcon">💰</div>
+            <h3>Shared Finances</h3>
+            <p>Track shared expenses and budgets together. Full transparency, zero confusion.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- How It Works Section -->
+    <section class="howItWorks" id="how-it-works">
+      <div class="featuresContainer">
+        <div class="sectionHeader">
+          <h2>Real-Time Sync Across Devices</h2>
+          <p>All your data is synced instantly between you and your partner</p>
+        </div>
+
+        <div class="benefitsGrid">
+          <div class="benefitItem">
+            <div class="benefitNumber">1</div>
+            <h3>Create & Share</h3>
+            <p>Add todos, events, or expenses. Your partner sees them instantly.</p>
+          </div>
+
+          <div class="benefitItem">
+            <div class="benefitNumber">2</div>
+            <h3>Stay Synced</h3>
+            <p>Real-time updates keep you both on the same page, always.</p>
+          </div>
+
+          <div class="benefitItem">
+            <div class="benefitNumber">3</div>
+            <h3>Organize Better</h3>
+            <p>Work as a team to manage your shared life effortlessly.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- App Preview Section -->
+    <section class="appPreview">
+      <div class="featuresContainer">
+        <div class="sectionHeader">
+          <h2>See Tandem in Action</h2>
+        </div>
+
+        <div class="previewGrid">
+          <div class="previewPhone">
+            <div class="phoneMock">
+              <p class="previewLabel">Todos</p>
+            </div>
+          </div>
+          <div class="previewPhone">
+            <div class="phoneMock">
+              <p class="previewLabel">Calendar</p>
+            </div>
+          </div>
+          <div class="previewPhone">
+            <div class="phoneMock">
+              <p class="previewLabel">Finances</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="testimonials">
+      <div class="featuresContainer">
+        <div class="sectionHeader">
+          <h2>Loved by Couples</h2>
+          <p>See what people are saying about Tandem</p>
+        </div>
+
+        <div class="testimonialGrid">
+          <div class="testimonialCard">
+            <div class="stars">⭐⭐⭐⭐⭐</div>
+            <p class="testimonialText">"Tandem completely changed how we organize our life together. It's like we finally have a shared brain!"</p>
+            <p class="testimonialAuthor">— Sarah & Mike</p>
+          </div>
+
+          <div class="testimonialCard">
+            <div class="stars">⭐⭐⭐⭐⭐</div>
+            <p class="testimonialText">"We no longer argue about who forgot what. Everything is right there in one place."</p>
+            <p class="testimonialAuthor">— Jessica & David</p>
+          </div>
+
+          <div class="testimonialCard">
+            <div class="stars">⭐⭐⭐⭐⭐</div>
+            <p class="testimonialText">"Best app for couples. The real-time sync is incredible and makes our relationship smoother."</p>
+            <p class="testimonialAuthor">— Alex & Jordan</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Download CTA Section -->
+    <section class="downloadCta" id="download">
+      <div class="featuresContainer">
+        <div class="ctaContent">
+          <h2>Ready to Organize Together?</h2>
+          <p>Download Tandem today and start syncing your shared life</p>
+          <div class="downloadButtons downloadButtonsLarge">
+            <a href="https://apps.apple.com" class="btn btnPrimary" target="_blank" rel="noopener noreferrer">
+              <span class="icon">🍎</span>
+              Download on App Store
+            </a>
+            <a href="https://play.google.com" class="btn btnSecondary" target="_blank" rel="noopener noreferrer">
+              <span class="icon">▶️</span>
+              Get it on Google Play
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
 
     <footer class="footer">
       <span>© <span id="year"></span> Tandem</span>
