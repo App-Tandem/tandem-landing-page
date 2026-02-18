@@ -186,18 +186,30 @@ h1, h2, h3{
   margin-top: 18px;
 }
 
-.downloadButtons a{
+.downloadButtons .btn{
   display: inline-flex;
   align-items: center;
   gap: 8px;
 }
 
-.storePlaceholder{
-  min-height: 20px;
-  margin: 12px 0 0;
-  color: var(--muted);
-  font-size: 14px;
+.storePopover{
+  position: fixed;
+  z-index: 1000;
+  transform: translate(-50%, -100%) translateY(-4px);
+  background: rgba(11, 18, 32, 0.92);
+  color: #fff;
+  padding: 8px 12px;
+  border-radius: 10px;
+  font-size: 13px;
   font-weight: 600;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.18s ease, transform 0.18s ease;
+}
+
+.storePopover.isVisible{
+  opacity: 1;
+  transform: translate(-50%, -100%) translateY(-10px);
 }
 
 .btnPrimary{
@@ -739,7 +751,7 @@ h1, h2, h3{
   gap: 16px;
 }
 
-.downloadButtonsLarge a{
+.downloadButtonsLarge .btn{
   width: min(320px, 100%);
   justify-content: center;
   padding: 14px 20px !important;
@@ -804,7 +816,7 @@ h1, h2, h3{
     width: 100%;
   }
 
-  .downloadButtons a{
+  .downloadButtons .btn{
     width: 100%;
     justify-content: center;
   }
