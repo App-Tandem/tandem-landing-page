@@ -16,6 +16,25 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
   });
 });
 
+// App/Play store placeholders
+let storePlaceholderTimeout;
+document.querySelectorAll(".storeButton").forEach(button => {
+  button.addEventListener("click", (event) => {
+    event.preventDefault();
+
+    document.querySelectorAll(".storePlaceholder").forEach(msg => {
+      msg.textContent = "Available shortly.";
+    });
+
+    clearTimeout(storePlaceholderTimeout);
+    storePlaceholderTimeout = setTimeout(() => {
+      document.querySelectorAll(".storePlaceholder").forEach(msg => {
+        msg.textContent = "";
+      });
+    }, 3000);
+  });
+});
+
 // Simple scroll fade-in animations for sections
 const observerOptions = {
   threshold: 0.1,
