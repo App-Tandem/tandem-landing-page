@@ -71,6 +71,12 @@ body::before{
 
 a{ color: inherit; text-decoration: none; }
 
+h1, h2, h3{
+  color: var(--text);
+  background: none;
+  -webkit-text-fill-color: currentColor;
+}
+
 .wrap{
   max-width: var(--max);
   margin: 0 auto;
