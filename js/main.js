@@ -32,7 +32,7 @@ const observer = new IntersectionObserver((entries) => {
 }, observerOptions);
 
 // Apply animations to sections
-[".features", ".howItWorks", ".appPreview", ".testimonials", ".downloadCta"].forEach(selector => {
+[".features", ".howItWorks", ".appPreview", ".guidesTeaser", ".testimonials", ".downloadCta"].forEach(selector => {
   const el = document.querySelector(selector);
   if (el) {
     el.style.opacity = "0";

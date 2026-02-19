@@ -640,6 +640,60 @@ h1, h2, h3{
   text-transform: uppercase;
 }
 
+/* Guides teaser */
+.guidesTeaser{
+  padding: 60px 0;
+  background:
+    radial-gradient(800px 420px at 12% 18%, var(--washC), transparent 60%),
+    radial-gradient(700px 380px at 95% 82%, var(--washA), transparent 60%);
+}
+
+.guidesGrid{
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px;
+  margin-top: 36px;
+}
+
+.guideCard{
+  padding: 28px 24px;
+  border-radius: 20px;
+  border: 1px solid rgba(255,255,255,0.5);
+  background: linear-gradient(135deg, rgba(255,255,255,0.78) 0%, rgba(255,255,255,0.55) 100%);
+  box-shadow: var(--shadow-sm);
+}
+
+.guideCard h3{
+  margin: 0 0 12px;
+  font-size: 22px;
+  letter-spacing: -0.3px;
+}
+
+.guideCard p{
+  margin: 0;
+  color: var(--muted);
+  line-height: 1.7;
+}
+
+.guideLink{
+  display: inline-block;
+  margin-top: 18px;
+  font-weight: 700;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.guidesAll{
+  text-align: center;
+  margin: 24px 0 0;
+}
+
+.guidesAll a{
+  font-weight: 700;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
 /* Testimonials Section */
 .testimonials{
   padding: 60px 0;
@@ -776,7 +830,8 @@ h1, h2, h3{
   .featureGrid,
   .benefitsGrid,
   .previewGrid,
-  .testimonialGrid{
+  .testimonialGrid,
+  .guidesGrid{
     grid-template-columns: 1fr;
     gap: 18px;
   }
@@ -788,6 +843,7 @@ h1, h2, h3{
   .features,
   .howItWorks,
   .appPreview,
+  .guidesTeaser,
   .testimonials,
   .downloadCta{
     padding: 40px 0;
