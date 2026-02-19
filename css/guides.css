@@ -66,6 +66,17 @@ a { color: inherit; }
   text-underline-offset: 3px;
 }
 
+.breadcrumbs {
+  margin: 2px 0 16px;
+  color: var(--muted);
+  font-size: 14px;
+}
+
+.breadcrumbs a {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
 .hero {
   border: 1px solid var(--border);
   border-radius: 20px;
@@ -155,6 +166,14 @@ ul, ol { padding-left: 22px; }
 .related a {
   text-decoration: underline;
   text-underline-offset: 3px;
+}
+
+.faq {
+  margin-top: 30px;
+}
+
+.faq .card {
+  margin-top: 12px;
 }
 
 .footer {
