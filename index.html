@@ -23,18 +23,43 @@
   <meta name="twitter:description" content="Stay organized together with shared to-dos, calendar events, and finances." />
   <meta name="twitter:image" content="https://tandem-app.eu/assets/finance-preview.png" />
 
-  <link rel="icon" href="assets/tandem-logo.png" />
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png" />
+  <link rel="apple-touch-icon" href="assets/apple-touch-icon.png" />
+  <link rel="manifest" href="site.webmanifest" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet" />
+
   <link rel="stylesheet" href="css/styles.css" />
+
   <script type="application/ld+json">
     {
       "@context": "https://schema.org",
       "@type": "SoftwareApplication",
       "name": "Tandem",
       "applicationCategory": "ProductivityApplication",
-      "operatingSystem": "iOS, Android",
+      "operatingSystem": "iOS",
       "url": "https://tandem-app.eu/",
       "description": "Tandem helps couples stay organized with shared to-dos, calendar events, and finances.",
       "image": "https://tandem-app.eu/assets/finance-preview.png",
+      "downloadUrl": "https://apps.apple.com/us/app/tandem-for-couples/id6758865751",
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": "5.0",
+        "ratingCount": "6",
+        "bestRating": "5"
+      },
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      },
+      "screenshot": [
+        "https://tandem-app.eu/assets/iphone16-pro-max-01.png",
+        "https://tandem-app.eu/assets/iphone16-pro-max-03.png",
+        "https://tandem-app.eu/assets/iphone16-pro-max-04.png"
+      ],
       "publisher": {
         "@type": "Organization",
         "name": "Tandem",
@@ -42,50 +67,97 @@
       }
     }
   </script>
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Is Tandem free?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Yes! Tandem is free to download and use. A premium subscription unlocks additional features." }
+        },
+        {
+          "@type": "Question",
+          "name": "Is my data private and secure?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Absolutely. Your data is encrypted and stored securely. We never sell your personal information. Read our full privacy policy for details." }
+        },
+        {
+          "@type": "Question",
+          "name": "Is Tandem available on Android?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Not yet — we're actively working on the Android version. Join the waitlist to get notified when it launches." }
+        },
+        {
+          "@type": "Question",
+          "name": "How is Tandem different from Google Calendar or Splitwise?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Tandem combines shared todos, a shared calendar, and shared finances into one app built specifically for couples. No more juggling 3+ different apps." }
+        }
+      ]
+    }
+  </script>
 </head>
 
 <body>
   <div class="wrap">
-    <header class="header">
+    <header class="header" id="header">
       <a class="brand" href="#hero">
-        <img src="assets/tandem-logo.png" alt="Tandem logo" />
+        <img src="assets/tandem-logo-200.png" alt="Tandem logo" width="200" height="200" />
         <span class="brandText">Tandem</span>
       </a>
-      <nav class="headerNav">
+      <nav class="headerNav" id="headerNav">
         <a href="#features">Features</a>
         <a href="#how-it-works">How It Works</a>
         <a href="guides/">Guides</a>
         <a href="#download">Download</a>
       </nav>
+      <button class="hamburger" id="hamburger" aria-label="Toggle menu" aria-expanded="false" aria-controls="headerNav">
+        <span></span><span></span><span></span>
+      </button>
     </header>
+
+    <!-- Sticky Download Bar -->
+    <div class="stickyBar" id="stickyBar">
+      <div class="stickyBarInner">
+        <span class="stickyBarText">Download Tandem</span>
+        <a class="btn btnPrimary btnSmall" href="https://apps.apple.com/us/app/tandem-for-couples/id6758865751">
+          <svg width="16" height="16" viewBox="0 0 384 512" fill="currentColor"><path d="M318.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.8-74.3 20.7-88.5 20.7-15 0-49.4-19.7-76.4-19.7C63.3 141.2 4 184.8 4 273.5q0 39.3 14.4 81.2c12.8 36.7 59 126.7 107.2 125.2 25.2-.6 43-17.9 75.8-17.9 31.8 0 48.3 17.9 76.4 17.9 48.6-.7 90.4-82.5 102.6-119.3-65.2-30.7-61.7-90-61.7-91.9zm-56.6-164.2c27.3-32.4 24.8-61.9 24-72.5-24.1 1.4-52 16.4-67.9 34.9-17.5 19.8-27.8 44.3-25.6 71.9 26.1 2 49.9-11.4 69.5-34.3z"/></svg>
+          App Store
+        </a>
+      </div>
+    </div>
 
     <!-- Hero Section -->
     <main class="hero" id="hero">
       <section class="heroLeft">
+        <div class="heroBadge">New on iOS</div>
         <h1 class="claim">
-          Make your partner happy.<br />
-          Now available.
+          Finally, a planner<br />built for two.
         </h1>
 
         <p class="sub">
-          Tandem helps you and your partner stay organized together. Manage shared todos, calendar events, and finances—all in one place.
+          Stop juggling group chats, shared notes, and spreadsheets. Tandem keeps you and your partner aligned on tasks, events, and money — all in one place.
         </p>
 
         <div class="downloadButtons">
           <a class="btn btnPrimary" href="https://apps.apple.com/us/app/tandem-for-couples/id6758865751">
-            <span class="icon">🍎</span>
+            <svg width="18" height="18" viewBox="0 0 384 512" fill="currentColor"><path d="M318.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.8-74.3 20.7-88.5 20.7-15 0-49.4-19.7-76.4-19.7C63.3 141.2 4 184.8 4 273.5q0 39.3 14.4 81.2c12.8 36.7 59 126.7 107.2 125.2 25.2-.6 43-17.9 75.8-17.9 31.8 0 48.3 17.9 76.4 17.9 48.6-.7 90.4-82.5 102.6-119.3-65.2-30.7-61.7-90-61.7-91.9zm-56.6-164.2c27.3-32.4 24.8-61.9 24-72.5-24.1 1.4-52 16.4-67.9 34.9-17.5 19.8-27.8 44.3-25.6 71.9 26.1 2 49.9-11.4 69.5-34.3z"/></svg>
             App Store
           </a>
-          <a class="btn btnSecondary" href="support.html#google-play">
-            <span class="icon">▶️</span>
-            Google Play
+          <a class="btn btnSecondary" href="#android-waitlist">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="2" width="16" height="20" rx="2"/><line x1="12" y1="18" x2="12" y2="18.01"/></svg>
+            Android Waitlist
           </a>
+        </div>
+
+        <div class="socialProof">
+          <span class="socialProofStars">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
+          <span>5.0 on the App Store</span>
         </div>
       </section>
 
       <section class="heroRight" aria-label="App preview">
-        <div class="phone">
-          <img src="assets/iphone16-pro-max-03.png" alt="Calendar screen preview (pink)" class="heroShot" />
+        <div class="phone heroPhone">
+          <img src="assets/iphone16-pro-max-03.png" alt="Calendar screen preview showing shared couple calendar" class="heroShot" width="1320" height="2868" />
         </div>
       </section>
     </main>
@@ -100,21 +172,89 @@
 
         <div class="featureGrid">
           <div class="featureCard">
-            <div class="featureIcon">📋</div>
+            <div class="featureIconWrap featureIconCoral">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l0 20"/><path d="M2 12h20"/><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>
+            </div>
             <h3>Shared Todos</h3>
             <p>Create and manage tasks together. Never forget what matters most to you both.</p>
           </div>
 
           <div class="featureCard">
-            <div class="featureIcon">📅</div>
+            <div class="featureIconWrap featureIconTeal">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+            </div>
             <h3>Shared Calendar</h3>
             <p>Coordinate your schedules and never miss important dates. Stay perfectly in sync.</p>
           </div>
 
           <div class="featureCard">
-            <div class="featureIcon">💰</div>
+            <div class="featureIconWrap featureIconOrange">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="5" width="20" height="14" rx="2"/><line x1="2" y1="10" x2="22" y2="10"/></svg>
+            </div>
             <h3>Shared Finances</h3>
             <p>Track shared expenses and budgets together. Full transparency, zero confusion.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Comparison Section -->
+    <section class="comparison" id="comparison">
+      <div class="featuresContainer">
+        <div class="sectionHeader">
+          <h2>Why Couples Choose Tandem</h2>
+          <p>One app instead of juggling four</p>
+        </div>
+
+        <div class="comparisonTable">
+          <div class="compRow compHeader">
+            <div class="compFeature"></div>
+            <div class="compApp compHighlight">Tandem</div>
+            <div class="compApp">Google Cal</div>
+            <div class="compApp">Splitwise</div>
+            <div class="compApp">Notion</div>
+          </div>
+          <div class="compRow">
+            <div class="compFeature">Shared Todos</div>
+            <div class="compApp compHighlight"><span class="checkYes">&#10003;</span></div>
+            <div class="compApp"><span class="checkNo">&#10007;</span></div>
+            <div class="compApp"><span class="checkNo">&#10007;</span></div>
+            <div class="compApp"><span class="checkPartial">~</span></div>
+          </div>
+          <div class="compRow">
+            <div class="compFeature">Shared Calendar</div>
+            <div class="compApp compHighlight"><span class="checkYes">&#10003;</span></div>
+            <div class="compApp"><span class="checkYes">&#10003;</span></div>
+            <div class="compApp"><span class="checkNo">&#10007;</span></div>
+            <div class="compApp"><span class="checkPartial">~</span></div>
+          </div>
+          <div class="compRow">
+            <div class="compFeature">Shared Budget</div>
+            <div class="compApp compHighlight"><span class="checkYes">&#10003;</span></div>
+            <div class="compApp"><span class="checkNo">&#10007;</span></div>
+            <div class="compApp"><span class="checkYes">&#10003;</span></div>
+            <div class="compApp"><span class="checkNo">&#10007;</span></div>
+          </div>
+          <div class="compRow">
+            <div class="compFeature">Real-Time Sync</div>
+            <div class="compApp compHighlight"><span class="checkYes">&#10003;</span></div>
+            <div class="compApp"><span class="checkYes">&#10003;</span></div>
+            <div class="compApp"><span class="checkPartial">~</span></div>
+            <div class="compApp"><span class="checkPartial">~</span></div>
+          </div>
+          <div class="compRow">
+            <div class="compFeature">Built for Couples</div>
+            <div class="compApp compHighlight"><span class="checkYes">&#10003;</span></div>
+            <div class="compApp"><span class="checkNo">&#10007;</span></div>
+            <div class="compApp"><span class="checkNo">&#10007;</span></div>
+            <div class="compApp"><span class="checkNo">&#10007;</span></div>
+          </div>
+          <div class="compRow">
+            <div class="compFeature">Mobile-First</div>
+            <div class="compApp compHighlight"><span class="checkYes">&#10003;</span></div>
+            <div class="compApp"><span class="checkYes">&#10003;</span></div>
+            <div class="compApp"><span class="checkYes">&#10003;</span></div>
+            <div class="compApp"><span class="checkNo">&#10007;</span></div>
           </div>
         </div>
       </div>
@@ -124,27 +264,27 @@
     <section class="howItWorks" id="how-it-works">
       <div class="featuresContainer">
         <div class="sectionHeader">
-          <h2>Real-Time Sync Across Devices</h2>
-          <p>All your data is synced instantly between you and your partner</p>
+          <h2>See How It Works</h2>
+          <p>Real couples, real scenarios, real-time sync</p>
         </div>
 
         <div class="benefitsGrid">
           <div class="benefitItem">
             <div class="benefitNumber">1</div>
-            <h3>Create & Share</h3>
-            <p>Add todos, events, or expenses. Your partner sees them instantly.</p>
+            <h3>Add a grocery list</h3>
+            <p>One partner adds items to the shared todo. The other sees them instantly — no reminders needed.</p>
           </div>
 
           <div class="benefitItem">
             <div class="benefitNumber">2</div>
-            <h3>Stay Synced</h3>
-            <p>Real-time updates keep you both on the same page, always.</p>
+            <h3>Schedule date night</h3>
+            <p>Add an event to the shared calendar. Your partner's calendar updates in real time.</p>
           </div>
 
           <div class="benefitItem">
             <div class="benefitNumber">3</div>
-            <h3>Organize Better</h3>
-            <p>Work as a team to manage your shared life effortlessly.</p>
+            <h3>Split the rent</h3>
+            <p>Log a shared expense. Both of you see the balance update — full transparency, zero arguments.</p>
           </div>
         </div>
       </div>
@@ -160,19 +300,19 @@
         <div class="previewGrid">
           <div class="previewPhone">
             <div class="phoneMock">
-              <img src="assets/iphone16-pro-max-01.png" alt="Shared todos screen (pink)" class="previewImage" />
+              <img src="assets/iphone16-pro-max-01.png" alt="Shared todos screen" class="previewImage" loading="lazy" width="1320" height="2868" />
             </div>
             <p class="previewLabel">Shared Todos</p>
           </div>
           <div class="previewPhone">
             <div class="phoneMock">
-              <img src="assets/iphone16-pro-max-03.png" alt="Calendar screen (pink)" class="previewImage" />
+              <img src="assets/iphone16-pro-max-03.png" alt="Shared calendar screen" class="previewImage" loading="lazy" width="1320" height="2868" />
             </div>
             <p class="previewLabel">Calendar</p>
           </div>
           <div class="previewPhone">
             <div class="phoneMock">
-              <img src="assets/iphone16-pro-max-04.png" alt="Finances screen (pink)" class="previewImage" />
+              <img src="assets/iphone16-pro-max-04.png" alt="Shared finances screen" class="previewImage" loading="lazy" width="1320" height="2868" />
             </div>
             <p class="previewLabel">Finances</p>
           </div>
@@ -180,6 +320,37 @@
       </div>
     </section>
 
+    <!-- Testimonials Section -->
+    <section class="testimonials">
+      <div class="featuresContainer">
+        <div class="sectionHeader">
+          <h2>Loved by Couples</h2>
+          <p>Rated 5.0 on the App Store</p>
+        </div>
+
+        <div class="testimonialGrid">
+          <div class="testimonialCard">
+            <span class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
+            <p class="testimonialText">"Great app for busy couples, really helped organize daily tasks, minimized number of unnecessary fights"</p>
+            <p class="testimonialAuthor">coho16 &middot; App Store</p>
+          </div>
+
+          <div class="testimonialCard">
+            <span class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
+            <p class="testimonialText">"It really helps with organizing the day to day life of a couple while being user-friendly. I'd definitely recommend this app."</p>
+            <p class="testimonialAuthor">V1dav &middot; App Store</p>
+          </div>
+
+          <div class="testimonialCard">
+            <span class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
+            <p class="testimonialText">"This app changed my relationship for the better! We just recently moved in together and are figuring out how to spread chores and bills — the todos are a huge help."</p>
+            <p class="testimonialAuthor">Peroo12 &middot; App Store</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Guides Teaser -->
     <section class="guidesTeaser">
       <div class="featuresContainer">
         <div class="sectionHeader">
@@ -198,8 +369,53 @@
             <a class="guideLink" href="guides/weekly-couple-planning-meeting.html">Read guide</a>
           </article>
         </div>
-        <p class="guidesAll">Also read: <a href="guides/tandem-vs-notion-for-couples.html">Tandem vs Notion</a> · <a href="guides/best-couples-planner-app.html">Best Couples Planner App</a></p>
+        <p class="guidesAll">Also read: <a href="guides/tandem-vs-notion-for-couples.html">Tandem vs Notion</a> &middot; <a href="guides/best-couples-planner-app.html">Best Couples Planner App</a></p>
         <p class="guidesAll"><a href="guides/">View all guides</a></p>
+      </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="faq" id="faq">
+      <div class="featuresContainer">
+        <div class="sectionHeader">
+          <h2>Frequently Asked Questions</h2>
+        </div>
+
+        <div class="faqList">
+          <details class="faqItem">
+            <summary>Is Tandem free?</summary>
+            <p>Yes! Tandem is free to download and use. A premium subscription unlocks additional features like unlimited shared lists and advanced budget tracking.</p>
+          </details>
+
+          <details class="faqItem">
+            <summary>Is my data private and secure?</summary>
+            <p>Absolutely. Your data is encrypted and stored securely using Supabase. We never sell your personal information. Read our <a href="privacy.html">privacy policy</a> for full details.</p>
+          </details>
+
+          <details class="faqItem" id="android-waitlist">
+            <summary>Is Tandem available on Android?</summary>
+            <div class="faqAnswer">
+              <p>Not yet — we're actively working on it! Join the waitlist to be the first to know when Tandem launches on Android.</p>
+              <form class="waitlistForm" action="https://formspree.io/f/xvgajqkj" method="POST">
+                <div class="field">
+                  <input type="email" name="email" placeholder="your@email.com" required />
+                  <input type="text" name="_gotcha" class="hp" tabindex="-1" autocomplete="off" />
+                  <button type="submit" class="btn btnPrimary btnSmall">Notify Me</button>
+                </div>
+              </form>
+            </div>
+          </details>
+
+          <details class="faqItem">
+            <summary>How is Tandem different from Google Calendar or Splitwise?</summary>
+            <p>Tandem combines shared todos, a shared calendar, and shared finances into one app built specifically for couples. Instead of juggling 3+ different apps, everything lives in one place with real-time sync.</p>
+          </details>
+
+          <details class="faqItem">
+            <summary>Can I use Tandem with a roommate or family member?</summary>
+            <p>Tandem is designed primarily for couples, but it works great for any two people who share a life — roommates, siblings, or close friends who want to stay organized together.</p>
+          </details>
+        </div>
       </div>
     </section>
 
@@ -211,12 +427,12 @@
           <p>Download Tandem today and start syncing your shared life</p>
           <div class="downloadButtons downloadButtonsLarge">
             <a class="btn btnPrimary" href="https://apps.apple.com/us/app/tandem-for-couples/id6758865751">
-              <span class="icon">🍎</span>
+              <svg width="18" height="18" viewBox="0 0 384 512" fill="currentColor"><path d="M318.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.8-74.3 20.7-88.5 20.7-15 0-49.4-19.7-76.4-19.7C63.3 141.2 4 184.8 4 273.5q0 39.3 14.4 81.2c12.8 36.7 59 126.7 107.2 125.2 25.2-.6 43-17.9 75.8-17.9 31.8 0 48.3 17.9 76.4 17.9 48.6-.7 90.4-82.5 102.6-119.3-65.2-30.7-61.7-90-61.7-91.9zm-56.6-164.2c27.3-32.4 24.8-61.9 24-72.5-24.1 1.4-52 16.4-67.9 34.9-17.5 19.8-27.8 44.3-25.6 71.9 26.1 2 49.9-11.4 69.5-34.3z"/></svg>
               Download on App Store
             </a>
-            <a class="btn btnSecondary" href="support.html#google-play">
-              <span class="icon">▶️</span>
-              Get it on Google Play
+            <a class="btn btnSecondary" href="#android-waitlist">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="2" width="16" height="20" rx="2"/><line x1="12" y1="18" x2="12" y2="18.01"/></svg>
+              Join Android Waitlist
             </a>
           </div>
         </div>
@@ -224,14 +440,22 @@
     </section>
 
     <footer class="footer">
-      <span>© <span id="year"></span> Tandem</span>
+      <span>&copy; <span id="year"></span> Tandem</span>
+      <div class="footerSocials">
+        <a href="https://www.instagram.com/tandem_for_couples" target="_blank" rel="noopener" aria-label="Instagram">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+        </a>
+        <a href="https://www.tiktok.com/@apptandem" target="_blank" rel="noopener" aria-label="TikTok">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1v-3.5a6.37 6.37 0 00-.79-.05A6.34 6.34 0 003.15 15.2a6.34 6.34 0 0010.86 4.46V13a8.28 8.28 0 005.58 2.16v-3.44a4.85 4.85 0 01-2.68-.8V6.69h2.68z"/></svg>
+        </a>
+      </div>
       <nav class="footerNav">
         <a href="guides/">Guides</a>
-        <span class="separator">•</span>
+        <span class="separator">&middot;</span>
         <a href="support.html">Support</a>
-        <span class="separator">•</span>
+        <span class="separator">&middot;</span>
         <a href="privacy.html">Privacy Policy</a>
-        <span class="separator">•</span>
+        <span class="separator">&middot;</span>
         <a href="terms.html">Terms of Service</a>
       </nav>
     </footer>

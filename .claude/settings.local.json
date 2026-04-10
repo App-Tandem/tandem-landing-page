@@ -1,0 +1,24 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(find /Users/brunopetkovic/Projects/tandem-landing-page -maxdepth 1 -type f -name *.json -o -name *.md -o -name *.config* -o -name README* -o -name .env*)",
+      "Bash(find /Users/brunopetkovic/Projects/tandem-landing-page/assets -type f -name *.png -o -name *.jpg -o -name *.svg -o -name *.webp)",
+      "Bash(wc:*)",
+      "mcp__chrome-devtools__take_screenshot",
+      "mcp__chrome-devtools__take_snapshot",
+      "mcp__chrome-devtools__navigate_page",
+      "Bash(sips -g pixelWidth -g pixelHeight /Users/brunopetkovic/Projects/tandem-landing-page/assets/tandem-logo.png)",
+      "Bash(sips -g pixelWidth -g pixelHeight tandem-logo.png)",
+      "Bash(ls -la iphone16-pro-max-*.png)",
+      "Bash(for f:*)",
+      "Bash(do echo:*)",
+      "Bash(sips -g pixelWidth -g pixelHeight \"$f\")",
+      "Bash(do sips:*)",
+      "Bash(ls -la opt-*.png)",
+      "mcp__chrome-devtools__evaluate_script",
+      "mcp__chrome-devtools__press_key",
+      "mcp__chrome-devtools__resize_page",
+      "mcp__chrome-devtools__emulate"
+    ]
+  }
+}
