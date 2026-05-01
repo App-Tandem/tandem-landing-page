@@ -36,21 +36,6 @@ if (hamburger && headerNav) {
   });
 }
 
-// Sticky download bar — show when hero leaves viewport
-const hero = document.getElementById("hero");
-const stickyBar = document.getElementById("stickyBar");
-
-if (hero && stickyBar) {
-  const stickyObserver = new IntersectionObserver(
-    (entries) => {
-      entries.forEach(entry => {
-        stickyBar.classList.toggle("visible", !entry.isIntersecting);
-      });
-    },
-    { threshold: 0, rootMargin: "-60px 0px 0px 0px" }
-  );
-  stickyObserver.observe(hero);
-}
 
 // Scroll fade-in animations — staggered per section
 const observerOptions = {
