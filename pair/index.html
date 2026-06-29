@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Join me on Tandem</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: #F9F4EE;
+      color: #1F2A37;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      padding: 24px;
+    }
+
+    .card {
+      background: #FFFFFF;
+      border-radius: 20px;
+      padding: 40px 32px;
+      max-width: 380px;
+      width: 100%;
+      text-align: center;
+      box-shadow: 0 8px 30px rgba(31, 42, 55, 0.08);
+      border: 1px solid rgba(31, 42, 55, 0.08);
+    }
+
+    .logo {
+      font-size: 28px;
+      font-weight: 800;
+      letter-spacing: 0.5px;
+      margin-bottom: 8px;
+    }
+
+    .subtitle {
+      font-size: 15px;
+      color: rgba(31, 42, 55, 0.6);
+      margin-bottom: 28px;
+    }
+
+    .code-label {
+      font-size: 14px;
+      font-weight: 600;
+      color: rgba(31, 42, 55, 0.65);
+      margin-bottom: 8px;
+    }
+
+    .code {
+      font-size: 36px;
+      font-weight: 800;
+      letter-spacing: 6px;
+      color: #1F2A37;
+      margin-bottom: 28px;
+      padding: 16px;
+      background: rgba(31, 42, 55, 0.04);
+      border-radius: 14px;
+      border: 1px solid rgba(31, 42, 55, 0.08);
+    }
+
+    .instructions {
+      font-size: 14px;
+      color: rgba(31, 42, 55, 0.6);
+      line-height: 1.5;
+      margin-bottom: 24px;
+    }
+
+    .store-button {
+      display: inline-block;
+      background: #1F2A37;
+      color: #FFFFFF;
+      font-weight: 700;
+      font-size: 16px;
+      padding: 16px 32px;
+      border-radius: 16px;
+      text-decoration: none;
+      transition: opacity 0.2s;
+      width: 100%;
+    }
+
+    .store-button:hover {
+      opacity: 0.85;
+    }
+
+    .no-code {
+      font-size: 15px;
+      color: rgba(31, 42, 55, 0.5);
+      margin-top: 12px;
+    }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <div class="logo">Tandem</div>
+    <div class="subtitle">The app for couples</div>
+
+    <div id="code-section" style="display: none;">
+      <div class="code-label">Your invite code</div>
+      <div class="code" id="invite-code"></div>
+      <div class="instructions">
+        Download Tandem, then enter this code on the pairing screen to connect with your partner.
+      </div>
+    </div>
+
+    <div id="no-code-section" style="display: none;">
+      <div class="instructions">
+        Download Tandem and ask your partner for the invite code to connect.
+      </div>
+    </div>
+
+    <a
+      href="https://apps.apple.com/hr/app/tandem-for-couples/id6758865751"
+      class="store-button"
+      id="store-link"
+    >
+      Download Tandem
+    </a>
+  </div>
+
+  <script>
+    (function () {
+      var params = new URLSearchParams(window.location.search);
+      var code = params.get("code");
+
+      if (code && /^[A-Z0-9]{4,8}$/i.test(code)) {
+        document.getElementById("invite-code").textContent = code.toUpperCase();
+        document.getElementById("code-section").style.display = "block";
+      } else {
+        document.getElementById("no-code-section").style.display = "block";
+      }
+
+      // Detect Android and link to Play Store (when available)
+      var ua = navigator.userAgent || "";
+      if (/android/i.test(ua)) {
+        // Update this URL when the Play Store listing is live
+        // document.getElementById("store-link").href = "https://play.google.com/store/apps/details?id=com.thebrunix.tandem";
+      }
+    })();
+  </script>
+</body>
+</html>

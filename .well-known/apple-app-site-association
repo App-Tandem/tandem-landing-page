@@ -1,0 +1,11 @@
+{
+  "applinks": {
+    "apps": [],
+    "details": [
+      {
+        "appID": "QFZV6F6PS9.com.thebrunix.tandem",
+        "paths": ["/pair", "/pair?*", "/pair/*"]
+      }
+    ]
+  }
+}
