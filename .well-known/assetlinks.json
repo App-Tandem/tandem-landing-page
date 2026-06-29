@@ -4,7 +4,7 @@
     "target": {
       "namespace": "android_app",
       "package_name": "com.thebrunix.tandem",
-      "sha256_cert_fingerprints": ["TODO_REPLACE_WITH_SHA256_FINGERPRINT"]
+      "sha256_cert_fingerprints": ["FF:D5:9C:DE:24:69:71:DF:11:11:3F:B6:9E:D3:FF:C8:01:1D:CB:41:75:A9:D1:73:ED:6D:78:57:8A:B6:BE:CD"]
     }
   }
 ]
