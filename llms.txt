@@ -1,0 +1,52 @@
+# Tandem — Couples Organizer App
+
+> Tandem is a free mobile app (iOS & Android) that helps couples organize their shared life. It combines shared to-do lists, a shared calendar, and shared expense tracking into one app built specifically for two people.
+
+Tandem replaces the need to juggle multiple apps like Google Calendar, Splitwise, and Notion. It is rated 5.0 on the App Store.
+
+## Core Features
+
+- **Shared Todos**: Create and manage task lists together with real-time sync. Assign tasks, set due dates, and track completion.
+- **Shared Calendar**: Coordinate schedules, plan events together, and never miss important dates. Both partners see updates instantly.
+- **Shared Finances**: Track shared expenses, split costs, and manage budgets together with full transparency.
+
+## Who It's For
+
+Tandem is designed for couples (dating, engaged, married, or cohabiting) who want to stay organized together. It also works for roommates or any two people sharing a household.
+
+## Download
+
+- iOS: https://apps.apple.com/us/app/tandem-for-couples/id6758865751
+- Android: https://play.google.com/store/apps/details?id=com.thebrunix.tandem
+
+## Guides
+
+Tandem publishes free, in-depth planning guides for couples:
+
+- [How to Split Expenses as a Couple: 5 Methods That Work](https://tandem-app.eu/guides/how-to-split-expenses-as-a-couple.html): Covers 50/50, proportional, category-based, joint account, and single-payer methods with a decision framework.
+- [Couple Budget Planning Guide](https://tandem-app.eu/guides/couple-budget-planning.html): Choose a money model, pick a split method, set up weekly and monthly money check-ins.
+- [Couples Financial Planning for Beginners](https://tandem-app.eu/guides/couples-financial-planning-for-beginners.html): First money conversation, financial transparency, shared goals, emergency fund, debt payoff, and a scalable money routine.
+- [How to Divide Household Chores Fairly](https://tandem-app.eu/guides/how-to-divide-chores-as-a-couple.html): 4 division methods, task inventory including invisible labor, ownership rules, and handling chore arguments.
+- [Shared Calendar for Couples: Best Setup and Rules](https://tandem-app.eu/guides/shared-calendar-for-couples.html): How to set up a shared calendar, color-coding, 5 rules every couple should agree on, app comparison.
+- [How to Coordinate Schedules as a Couple](https://tandem-app.eu/guides/how-to-coordinate-schedules-as-a-couple.html): Schedule mapping, anchor routines, weekly sync, protecting quality time, handling shift work.
+- [How to Build a Relationship Planning System](https://tandem-app.eu/guides/relationship-planning-system.html): The 3 planning layers (monthly goals, weekly commitments, daily execution), shared categories, task ownership.
+- [Weekly Couple Planning Meeting (30-Minute Template)](https://tandem-app.eu/guides/weekly-couple-planning-meeting.html): Minute-by-minute agenda for your weekly couple check-in.
+- [How to Set Goals as a Couple](https://tandem-app.eu/guides/how-to-set-goals-as-a-couple.html): Quarterly goal-setting system covering 6 categories with planning session template and retrospectives.
+- [Moving In Together Checklist](https://tandem-app.eu/guides/moving-in-together-checklist.html): Week-by-week timeline from 8 weeks before the move to your first 90 days together.
+- [Tandem vs Notion for Couples Planning](https://tandem-app.eu/guides/tandem-vs-notion-for-couples.html): Head-to-head comparison covering setup time, tasks, calendar, finances, and mobile experience.
+- [Best Couples Planner App: What to Look For](https://tandem-app.eu/guides/best-couples-planner-app.html): How to evaluate couples planner apps — the 5 features that actually matter.
+- [How to Manage Money as a Couple](https://tandem-app.eu/guides/how-to-manage-money-as-a-couple.html): Complete money management system using the 3-Account Method (Joint + Personal A + Personal B), shared money rules, spending thresholds, and routines.
+- [How to Stop Fighting About Money](https://tandem-app.eu/guides/how-to-stop-fighting-about-money.html): The 5 Money Fight Triggers and the Conflict-to-System approach. Practical steps to turn recurring money arguments into shared systems.
+- [How to Organize Your Household as a Couple](https://tandem-app.eu/guides/how-to-organize-your-household-as-a-couple.html): The 4-Zone Household System (Cleaning, Admin, Errands, Maintenance) with task inventories, ownership rules, and weekly syncs.
+- [Couple Meal Planning: A Weekly System for Two](https://tandem-app.eu/guides/couple-meal-planning.html): The 3-2-1 Meal Plan framework, 20-minute weekly planning routine, shared recipe rotation, and batch cooking strategies.
+- [How to Share a Grocery List With Your Partner](https://tandem-app.eu/guides/how-to-share-a-grocery-list-with-your-partner.html): The Add-Check-Shop Loop for shared grocery management, category organization, and comparison of shared list methods.
+- [Communication Tips for Couples Who Plan Together](https://tandem-app.eu/guides/communication-tips-for-couples.html): The 4 Communication Modes (Inform, Request, Negotiate, Check-in) and how to use each one when planning and organizing as a couple.
+- [First Apartment Together: Complete Setup Checklist](https://tandem-app.eu/guides/first-apartment-together-checklist.html): The First 30 Days System — week-by-week guide for setting up your first shared home, from essentials to routines.
+- [Best Apps for Couples in 2026](https://tandem-app.eu/guides/best-apps-for-couples.html): Comprehensive comparison of couple apps across categories (organizers, calendars, expense splitting, to-do lists). Introduces the Couple App Stack concept.
+
+## Contact
+
+- Website: https://tandem-app.eu
+- Support: https://tandem-app.eu/support.html
+- Instagram: https://www.instagram.com/tandem_for_couples
+- TikTok: https://www.tiktok.com/@apptandem
