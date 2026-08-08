@@ -61,6 +61,20 @@
       border: 1px solid rgba(31, 42, 55, 0.08);
     }
 
+    .copy-code-button {
+      appearance: none;
+      border: 0;
+      background: transparent;
+      color: #1F2A37;
+      cursor: pointer;
+      font: inherit;
+      font-size: 14px;
+      font-weight: 700;
+      margin: -16px 0 28px;
+      padding: 8px 12px;
+      text-decoration: underline;
+    }
+
     .instructions {
       font-size: 14px;
       color: rgba(31, 42, 55, 0.6);
@@ -85,6 +99,13 @@
       opacity: 0.85;
     }
 
+    .store-button + .store-button {
+      background: transparent;
+      border: 1px solid rgba(31, 42, 55, 0.18);
+      color: #1F2A37;
+      margin-top: 10px;
+    }
+
     .no-code {
       font-size: 15px;
       color: rgba(31, 42, 55, 0.5);
@@ -100,8 +121,9 @@
     <div id="code-section" style="display: none;">
       <div class="code-label">Your invite code</div>
       <div class="code" id="invite-code"></div>
+      <button class="copy-code-button" id="copy-code" type="button">Copy code</button>
       <div class="instructions">
-        Download Tandem, then enter this code on the pairing screen to connect with your partner.
+        Download Tandem, then use this code on the pairing screen to connect with your partner.
       </div>
     </div>
 
@@ -111,33 +133,72 @@
       </div>
     </div>
 
-    <a
-      href="https://apps.apple.com/hr/app/tandem-for-couples/id6758865751"
-      class="store-button"
-      id="store-link"
-    >
-      Download Tandem
+    <a href="https://apps.apple.com/hr/app/tandem-for-couples/id6758865751" class="store-button" id="store-link">
+      Download on the App Store
+    </a>
+    <a href="https://play.google.com/store/apps/details?id=com.thebrunix.tandem" class="store-button" id="play-store-link" style="display: none;">
+      Get it on Google Play
     </a>
   </div>
 
   <script>
+    !function(t,e){var o,n,p,r;e.__SV||(window.posthog=e,e._i=[],e.init=function(i,s,a){function g(t,e){var o=e.split(".");2===o.length&&(t=t[o[0]],e=o[1]),t[e]=function(){t.push([e].concat(Array.prototype.slice.call(arguments,0)))}}(p=t.createElement("script")).type="text/javascript",p.crossOrigin="anonymous",p.async=!0,p.src=s.api_host.replace(".i.posthog.com","-assets.i.posthog.com")+"/static/array.js",(r=t.getElementsByTagName("script")[0]).parentNode.insertBefore(p,r);var u=e;for(void 0!==a?u=e[a]=[]:a="posthog",u.people=u.people||[],u.toString=function(t){var e="posthog";return"posthog"!==a&&(e+="."+a),t||(e+=" (stub)"),e},u.people.toString=function(){return u.toString(1)+".people (stub)"},o="capture identify alias people.set people.set_once reset group groups register register_once unregister opt_in_capturing opt_out_capturing has_opted_in_capturing has_opted_out_capturing clear_opt_in_out_capturing start_session_recording stop_session_recording isFeatureEnabled getFeatureFlag getFeatureFlagPayload reloadFeatureFlags onFeatureFlags sendFeatureFlags getSurveys getActiveMatchingSurveys renderSurvey canRenderSurvey getEarlyAccessFeature enrollInEarlyAccessFeature getExperiments getActiveFeatureFlags onSessionId".split(" "),n=0;n<o.length;n++)g(u,o[n]);e._i.push([i,s,a])},e.__SV=1)}(document,window.posthog||[]);
+    posthog.init('phc_NEEtRGtNyCHZqLUzncdPGIFfXWXe9t4OroAXnhY8JRC', { api_host: 'https://eu.i.posthog.com', person_profiles: 'identified_only' });
+
     (function () {
       var params = new URLSearchParams(window.location.search);
       var code = params.get("code");
+      var normalizedCode = code && /^[A-Z0-9]{6}$/i.test(code) ? code.toUpperCase() : null;
+      var platform = /android/i.test(navigator.userAgent || "") ? "android" : "ios_or_other";
 
-      if (code && /^[A-Z0-9]{4,8}$/i.test(code)) {
-        document.getElementById("invite-code").textContent = code.toUpperCase();
+      posthog.capture("invite_landing_viewed", {
+        has_invite_code: Boolean(normalizedCode),
+        platform: platform,
+      });
+
+      if (normalizedCode) {
+        document.getElementById("invite-code").textContent = normalizedCode;
         document.getElementById("code-section").style.display = "block";
       } else {
         document.getElementById("no-code-section").style.display = "block";
       }
 
-      // Detect Android and link to Play Store (when available)
-      var ua = navigator.userAgent || "";
-      if (/android/i.test(ua)) {
-        // Update this URL when the Play Store listing is live
-        // document.getElementById("store-link").href = "https://play.google.com/store/apps/details?id=com.thebrunix.tandem";
+      document.getElementById("store-link").addEventListener("click", function () {
+        posthog.capture("invite_store_cta_clicked", { platform: "ios", has_invite_code: Boolean(normalizedCode) });
+      });
+
+      document.getElementById("play-store-link").addEventListener("click", function () {
+        posthog.capture("invite_store_cta_clicked", { platform: "android", has_invite_code: Boolean(normalizedCode) });
+      });
+
+      if (platform === "android") {
+        document.getElementById("store-link").style.display = "none";
+        document.getElementById("play-store-link").style.display = "inline-block";
       }
+
+      document.getElementById("copy-code").addEventListener("click", function () {
+        if (!normalizedCode) return;
+        var button = document.getElementById("copy-code");
+        var copied = function () {
+          button.textContent = "Code copied";
+          posthog.capture("invite_code_copied", { platform: platform });
+        };
+
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+          navigator.clipboard.writeText(normalizedCode).then(copied).catch(function () {});
+          return;
+        }
+
+        var textarea = document.createElement("textarea");
+        textarea.value = normalizedCode;
+        textarea.setAttribute("readonly", "");
+        textarea.style.position = "absolute";
+        textarea.style.left = "-9999px";
+        document.body.appendChild(textarea);
+        textarea.select();
+        if (document.execCommand("copy")) copied();
+        document.body.removeChild(textarea);
+      });
     })();
   </script>
 </body>
