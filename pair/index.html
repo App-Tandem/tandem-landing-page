@@ -57,6 +57,20 @@
       margin-bottom: 28px;
     }
 
+    .invite-title {
+      font-size: 28px;
+      line-height: 1.15;
+      margin: 16px 0 10px;
+      letter-spacing: -0.5px;
+    }
+
+    .invite-purpose {
+      font-size: 16px;
+      line-height: 1.5;
+      color: rgba(31, 42, 55, 0.66);
+      margin-bottom: 24px;
+    }
+
     .code-label {
       font-size: 14px;
       font-weight: 600;
@@ -126,6 +140,14 @@
       color: rgba(31, 42, 55, 0.5);
       margin-top: 12px;
     }
+
+    details {
+      margin: 18px 0 24px;
+      color: rgba(31, 42, 55, 0.65);
+      font-size: 13px;
+    }
+
+    summary { cursor: pointer; font-weight: 700; }
   </style>
 </head>
 <body>
@@ -133,17 +155,21 @@
     <div class="logo">Tandem</div>
     <div class="subtitle">The app for couples</div>
 
+    <h1 class="invite-title" id="invite-title">Your partner invited you to Tandem</h1>
+    <p class="invite-purpose" id="invite-purpose">Your private shared space is ready.</p>
+
     <div id="code-section" style="display: none;">
-      <div class="code-label">Your invite code</div>
-      <div class="code" id="invite-code"></div>
-      <button class="copy-code-button" id="copy-code" type="button">Copy code</button>
-      <div class="instructions">
-        Download Tandem, then use this code on the pairing screen to connect with your partner.
-      </div>
+      <div class="instructions">After installing, return to this message and tap the invite link again. Tandem will connect you automatically after sign-up.</div>
+      <details>
+        <summary>Need the manual code?</summary>
+        <div class="code-label" style="margin-top: 14px;">Your invite code</div>
+        <div class="code" id="invite-code"></div>
+        <button class="copy-code-button" id="copy-code" type="button">Copy code</button>
+      </details>
     </div>
 
     <div id="no-code-section" style="display: none;">
-      <div class="instructions">
+      <div class="instructions" id="no-code-copy">
         Download Tandem and ask your partner for the invite code to connect.
       </div>
     </div>
@@ -164,12 +190,42 @@
       var params = new URLSearchParams(window.location.search);
       var code = params.get("code");
       var normalizedCode = code && /^[A-Z0-9]{6}$/i.test(code) ? code.toUpperCase() : null;
+      var rawName = (params.get("from") || "").replace(/[\u0000-\u001f\u007f]/g, "").trim().replace(/\s+/g, " ").slice(0, 40);
+      var inviterName = rawName && rawName.toLowerCase() !== "user" ? rawName : null;
+      var goal = params.get("goal");
+      var referralSession = params.get("ref");
+      var inviteSession = params.get("sid");
+      var validReferralSession = referralSession && /^ref_[a-z0-9_]{12,52}$/.test(referralSession) ? referralSession : null;
+      var validInviteSession = inviteSession && /^inv_[a-z0-9_]{10,48}$/.test(inviteSession) ? inviteSession : null;
       var platform = /android/i.test(navigator.userAgent || "") ? "android" : "ios_or_other";
+      var goalCopy = {
+        calendar: "Join them to plan your week together.",
+        tasks: "Join them to share tasks and the mental load.",
+        money: "Join them to keep shared expenses clear.",
+        weekly_sync: "Join them for your first Weekly Sync together."
+      };
+
+      if (normalizedCode) {
+        document.getElementById("invite-title").textContent = inviterName
+          ? inviterName + " invited you to Tandem"
+          : "Your partner invited you to Tandem";
+        document.getElementById("invite-purpose").textContent = goalCopy[goal] || "Your private shared space is ready.";
+      } else if (validReferralSession) {
+        document.getElementById("invite-title").textContent = "A couple you know loves Tandem";
+        document.getElementById("invite-purpose").textContent = "Create a private shared space for your plans, tasks, expenses and Weekly Sync.";
+        document.getElementById("no-code-copy").textContent = "Download Tandem, create your shared space, and invite your partner when you are ready.";
+      }
 
       posthog.capture("invite_landing_viewed", {
         has_invite_code: Boolean(normalizedCode),
         platform: platform,
+        invite_goal: goalCopy[goal] ? goal : null,
+        referral: Boolean(validReferralSession),
+        invite_session_id: validInviteSession,
       });
+      if (validReferralSession) {
+        posthog.capture("referral_landing_viewed", { referral_session_id: validReferralSession, platform: platform });
+      }
 
       if (normalizedCode) {
         document.getElementById("invite-code").textContent = normalizedCode;
@@ -180,10 +236,12 @@
 
       document.getElementById("store-link").addEventListener("click", function () {
         posthog.capture("invite_store_cta_clicked", { platform: "ios", has_invite_code: Boolean(normalizedCode) });
+        if (validReferralSession) posthog.capture("referral_store_cta_clicked", { referral_session_id: validReferralSession, platform: "ios" });
       });
 
       document.getElementById("play-store-link").addEventListener("click", function () {
         posthog.capture("invite_store_cta_clicked", { platform: "android", has_invite_code: Boolean(normalizedCode) });
+        if (validReferralSession) posthog.capture("referral_store_cta_clicked", { referral_session_id: validReferralSession, platform: "android" });
       });
 
       if (platform === "android") {
