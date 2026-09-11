@@ -19,13 +19,18 @@
   <meta name="twitter:title" content="Join your partner on Tandem" />
   <meta name="twitter:description" content="Your shared space for planning life together." />
   <meta name="twitter:image" content="https://tandem-app.eu/assets/tandem-invite-preview.png" />
+  <meta name="apple-itunes-app" content="app-id=6758865751" />
+  <link rel="icon" type="image/png" sizes="32x32" href="../assets/favicon-32.png" />
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
 
     body {
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-      background-color: #F9F4EE;
-      color: #1F2A37;
+      background:
+        radial-gradient(720px 420px at 8% 4%, rgba(124, 58, 237, .18), transparent 64%),
+        radial-gradient(600px 400px at 94% 96%, rgba(236, 72, 153, .11), transparent 66%),
+        #F7F7FB;
+      color: #171824;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -35,46 +40,79 @@
 
     .card {
       background: #FFFFFF;
-      border-radius: 20px;
-      padding: 40px 32px;
-      max-width: 380px;
+      border-radius: 28px;
+      padding: 34px 30px 30px;
+      max-width: 430px;
       width: 100%;
       text-align: center;
-      box-shadow: 0 8px 30px rgba(31, 42, 55, 0.08);
-      border: 1px solid rgba(31, 42, 55, 0.08);
+      box-shadow: 0 24px 80px rgba(41, 35, 77, 0.13);
+      border: 1px solid rgba(78, 62, 122, 0.1);
     }
 
-    .logo {
-      font-size: 28px;
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 20px;
+      font-size: 17px;
       font-weight: 800;
-      letter-spacing: 0.5px;
-      margin-bottom: 8px;
+      letter-spacing: -0.2px;
     }
 
-    .subtitle {
-      font-size: 15px;
-      color: rgba(31, 42, 55, 0.6);
-      margin-bottom: 28px;
+    .brand img {
+      width: 38px;
+      height: 38px;
+      object-fit: contain;
     }
 
     .invite-title {
-      font-size: 28px;
-      line-height: 1.15;
-      margin: 16px 0 10px;
-      letter-spacing: -0.5px;
+      font-size: clamp(27px, 7vw, 34px);
+      line-height: 1.1;
+      margin: 0 0 12px;
+      letter-spacing: -1px;
     }
 
     .invite-purpose {
       font-size: 16px;
       line-height: 1.5;
-      color: rgba(31, 42, 55, 0.66);
-      margin-bottom: 24px;
+      color: rgba(23, 24, 36, 0.66);
+      margin-bottom: 20px;
+    }
+
+    .preview {
+      display: grid;
+      gap: 8px;
+      margin: 0 0 22px;
+      padding: 14px;
+      border-radius: 18px;
+      background: #F5F3FF;
+      text-align: left;
+    }
+
+    .preview-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      color: #37304f;
+      font-size: 14px;
+      font-weight: 650;
+    }
+
+    .preview-icon {
+      display: grid;
+      place-items: center;
+      width: 30px;
+      height: 30px;
+      flex: 0 0 30px;
+      border-radius: 10px;
+      color: #6D28D9;
+      background: #FFFFFF;
     }
 
     .code-label {
       font-size: 14px;
       font-weight: 600;
-      color: rgba(31, 42, 55, 0.65);
+      color: rgba(23, 24, 36, 0.65);
       margin-bottom: 8px;
     }
 
@@ -82,19 +120,19 @@
       font-size: 36px;
       font-weight: 800;
       letter-spacing: 6px;
-      color: #1F2A37;
+      color: #171824;
       margin-bottom: 28px;
       padding: 16px;
-      background: rgba(31, 42, 55, 0.04);
+      background: rgba(109, 40, 217, 0.04);
       border-radius: 14px;
-      border: 1px solid rgba(31, 42, 55, 0.08);
+      border: 1px solid rgba(109, 40, 217, 0.1);
     }
 
     .copy-code-button {
       appearance: none;
       border: 0;
       background: transparent;
-      color: #1F2A37;
+      color: #5B21B6;
       cursor: pointer;
       font: inherit;
       font-size: 14px;
@@ -106,57 +144,94 @@
 
     .instructions {
       font-size: 14px;
-      color: rgba(31, 42, 55, 0.6);
+      color: rgba(23, 24, 36, 0.6);
       line-height: 1.5;
       margin-bottom: 24px;
     }
 
     .store-button {
       display: inline-block;
-      background: #1F2A37;
+      background: linear-gradient(135deg, #6D28D9, #7C3AED);
       color: #FFFFFF;
       font-weight: 700;
       font-size: 16px;
       padding: 16px 32px;
       border-radius: 16px;
       text-decoration: none;
-      transition: opacity 0.2s;
+      box-shadow: 0 10px 24px rgba(109, 40, 217, .24);
+      transition: opacity 0.2s, transform 0.2s;
       width: 100%;
     }
 
     .store-button:hover {
       opacity: 0.85;
+      transform: translateY(-1px);
     }
 
-    .store-button + .store-button {
+    .has-open-app .store-button + .store-button {
       background: transparent;
-      border: 1px solid rgba(31, 42, 55, 0.18);
-      color: #1F2A37;
+      border: 1px solid rgba(23, 24, 36, 0.16);
+      color: #171824;
       margin-top: 10px;
+      box-shadow: none;
     }
 
     .no-code {
       font-size: 15px;
-      color: rgba(31, 42, 55, 0.5);
+      color: rgba(23, 24, 36, 0.5);
       margin-top: 12px;
     }
 
     details {
       margin: 18px 0 24px;
-      color: rgba(31, 42, 55, 0.65);
+      color: rgba(23, 24, 36, 0.65);
       font-size: 13px;
     }
 
     summary { cursor: pointer; font-weight: 700; }
+
+    .safe-note {
+      display: flex;
+      justify-content: center;
+      gap: 6px;
+      margin-top: 17px;
+      color: rgba(23, 24, 36, .5);
+      font-size: 12px;
+      line-height: 1.4;
+    }
+
+    @media (max-width: 480px) {
+      body { padding: 14px; align-items: flex-start; }
+      .card { margin-top: 10px; padding: 28px 20px 24px; border-radius: 24px; }
+    }
+
+    @media (prefers-color-scheme: dark) {
+      body { background: #11111A; color: #F7F7FC; }
+      .card { background: #1A1A26; border-color: rgba(255,255,255,.08); }
+      .invite-purpose, .instructions, details, .safe-note { color: rgba(247,247,252,.63); }
+      .preview { background: rgba(124,58,237,.13); }
+      .preview-item { color: #E9E5FF; }
+      .preview-icon { background: rgba(255,255,255,.08); color: #B69AFD; }
+      .code { color: #F7F7FC; border-color: rgba(255,255,255,.08); }
+      .store-button + .store-button { color: #F7F7FC; border-color: rgba(255,255,255,.14); }
+    }
   </style>
 </head>
 <body>
-  <div class="card">
-    <div class="logo">Tandem</div>
-    <div class="subtitle">The app for couples</div>
+  <div class="card" id="invite-card">
+    <div class="brand">
+      <img src="../assets/tandem-logo-200.png" alt="" width="38" height="38" />
+      <span>Tandem</span>
+    </div>
 
     <h1 class="invite-title" id="invite-title">Your partner invited you to Tandem</h1>
     <p class="invite-purpose" id="invite-purpose">Your private shared space is ready.</p>
+
+    <div class="preview" aria-label="What you can share in Tandem">
+      <div class="preview-item"><span class="preview-icon" aria-hidden="true">✓</span><span>Plan tasks and routines together</span></div>
+      <div class="preview-item"><span class="preview-icon" aria-hidden="true">□</span><span>See one shared calendar</span></div>
+      <div class="preview-item"><span class="preview-icon" aria-hidden="true">♡</span><span>Make time for a Weekly Sync</span></div>
+    </div>
 
     <div id="code-section" style="display: none;">
       <div class="instructions">After installing, return to this message and tap the invite link again. Tandem will connect you automatically after sign-up.</div>
@@ -174,12 +249,16 @@
       </div>
     </div>
 
+    <a href="#" class="store-button" id="open-app-link" style="display: none;">
+      Open Tandem
+    </a>
     <a href="https://apps.apple.com/hr/app/tandem-for-couples/id6758865751" class="store-button" id="store-link">
       Download on the App Store
     </a>
     <a href="https://play.google.com/store/apps/details?id=com.thebrunix.tandem" class="store-button" id="play-store-link" style="display: none;">
       Get it on Google Play
     </a>
+    <p class="safe-note"><span aria-hidden="true">⌁</span><span>Only continue if you recognize the person who sent this invite.</span></p>
   </div>
 
   <script src="../js/analytics.js"></script>
@@ -228,6 +307,18 @@
       if (normalizedCode) {
         document.getElementById("invite-code").textContent = normalizedCode;
         document.getElementById("code-section").style.display = "block";
+        var deepLinkParams = new URLSearchParams();
+        deepLinkParams.set("code", normalizedCode);
+        if (inviterName) deepLinkParams.set("from", inviterName);
+        if (goalCopy[goal]) deepLinkParams.set("goal", goal);
+        if (validInviteSession) deepLinkParams.set("sid", validInviteSession);
+        var openAppLink = document.getElementById("open-app-link");
+        document.getElementById("invite-card").classList.add("has-open-app");
+        openAppLink.href = "tandem://pair?" + deepLinkParams.toString();
+        openAppLink.style.display = "inline-block";
+        openAppLink.addEventListener("click", function () {
+          posthog.capture("invite_open_app_clicked", { platform: platform, invite_goal: goalCopy[goal] ? goal : null });
+        });
       } else {
         document.getElementById("no-code-section").style.display = "block";
       }
