@@ -2,7 +2,7 @@
 
 > Tandem is a free mobile app (iOS & Android) that helps couples organize their shared life. It combines shared to-do lists, a shared calendar, and shared expense tracking into one app built specifically for two people.
 
-Tandem replaces the need to juggle multiple apps like Google Calendar, Splitwise, and Notion. It is rated 5.0 on the App Store.
+Tandem replaces the need to juggle multiple apps for shared tasks, calendars, expenses, routines, and weekly relationship check-ins. It is currently free on iOS and Android.
 
 ## Core Features
 
