@@ -59,14 +59,14 @@ if (mobileDownloadBar && mobileDownloadLink) {
   const storeDetails = visitorPlatform === "android"
     ? {
         href: "https://play.google.com/store/apps/details?id=com.thebrunix.tandem",
-        label: "Get for Android"
+        label: mobileDownloadLink.dataset.labelAndroid || "Get for Android"
       }
     : visitorPlatform === "ios"
       ? {
-          href: "https://apps.apple.com/us/app/tandem-for-couples/id6758865751",
-          label: "Get for iPhone"
+          href: mobileDownloadLink.dataset.iosUrl || "https://apps.apple.com/us/app/tandem-for-couples/id6758865751",
+          label: mobileDownloadLink.dataset.labelIos || "Get for iPhone"
         }
-      : { href: "#download", label: "Get Tandem" };
+      : { href: "#download", label: mobileDownloadLink.dataset.labelOther || "Get Tandem" };
 
   mobileDownloadLink.href = storeDetails.href;
   mobileDownloadLink.textContent = storeDetails.label;

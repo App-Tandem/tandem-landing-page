@@ -25,7 +25,7 @@
     ? "guide"
     : path.indexOf("/pair") === 0
       ? "invite"
-      : path === "/" || path === "/index.html"
+      : path === "/" || path === "/index.html" || path === "/hr/" || path === "/hr/index.html"
         ? "homepage"
         : "supporting";
 
