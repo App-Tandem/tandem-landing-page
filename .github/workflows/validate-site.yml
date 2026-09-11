@@ -1,0 +1,24 @@
+name: Validate landing page
+
+on:
+  pull_request:
+  push:
+    branches: [master]
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - name: Validate HTML, links, metadata, and claims
+        run: npm run validate
+      - name: Validate JavaScript syntax
+        run: |
+          node --check js/analytics.js
+          node --check js/main.js

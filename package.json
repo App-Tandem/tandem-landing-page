@@ -1,0 +1,7 @@
+{
+  "name": "tandem-landing-page",
+  "private": true,
+  "scripts": {
+    "validate": "node scripts/validate-site.mjs"
+  }
+}
