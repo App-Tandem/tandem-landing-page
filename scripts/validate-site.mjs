@@ -32,6 +32,7 @@ function localTargetExists(htmlFile, rawTarget) {
 
 const files = walk(root);
 const htmlFiles = files.filter((file) => file.endsWith(".html"));
+const styleFiles = files.filter((file) => file.endsWith(".css"));
 
 for (const file of htmlFiles) {
   const html = fs.readFileSync(file, "utf8");
@@ -48,6 +49,13 @@ for (const file of htmlFiles) {
 
   for (const match of html.matchAll(/\s(?:src|href)="([^"]+)"/gi)) {
     if (!localTargetExists(file, match[1])) addError(file, `broken local reference: ${match[1]}`);
+  }
+}
+
+for (const file of [...htmlFiles, ...styleFiles]) {
+  const source = fs.readFileSync(file, "utf8");
+  if (/prefers-color-scheme\s*:\s*dark/i.test(source)) {
+    addError(file, "landing page must remain light-mode only");
   }
 }
 
