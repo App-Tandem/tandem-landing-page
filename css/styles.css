@@ -502,6 +502,11 @@ h1, h2, h3{
   box-shadow: 0 18px 40px rgba(15,23,42,0.12);
 }
 
+.heroPhone picture,
+.phoneMock picture{
+  display: contents;
+}
+
 /* ═══════════════════════════════
    Footer
    ═══════════════════════════════ */
@@ -1421,6 +1426,14 @@ h1, h2, h3{
 }
 
 @media (prefers-reduced-motion: reduce){
+  html{ scroll-behavior: auto; }
+  *, *::before, *::after{
+    animation-duration: .01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-duration: .01ms !important;
+  }
+
   .mobileDownloadBar{
     transition: none;
   }

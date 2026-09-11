@@ -88,6 +88,7 @@ const observerOptions = {
   rootMargin: "0px 0px -50px 0px"
 };
 
+const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 const sectionObserver = new IntersectionObserver((entries) => {
   entries.forEach(entry => {
     if (entry.isIntersecting) {
@@ -113,6 +114,10 @@ const animatedSections = [
 animatedSections.forEach(selector => {
   const el = document.querySelector(selector);
   if (el) {
+    if (prefersReducedMotion) {
+      el.classList.add("fadeInVisible");
+      return;
+    }
     el.classList.add("fadeInReady");
 
     // Prepare child cards for staggered animation
