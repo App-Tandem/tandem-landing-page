@@ -192,6 +192,9 @@ h1, h2, h3{
 /* ═══════════════════════════════
    Sticky Download Bar
    ═══════════════════════════════ */
+.mobileDownloadBar{
+  display: none;
+}
 
 /* ═══════════════════════════════
    Hero
@@ -1358,6 +1361,71 @@ h1, h2, h3{
 
 }
 
+@media (max-width: 720px){
+  body.hasStickyDownload{
+    padding-bottom: calc(92px + env(safe-area-inset-bottom));
+  }
+
+  .downloadButtons .isDeviceHidden{
+    display: none;
+  }
+
+  .mobileDownloadBar{
+    position: fixed;
+    z-index: 250;
+    left: 12px;
+    right: 12px;
+    bottom: calc(10px + env(safe-area-inset-bottom));
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 14px;
+    padding: 10px 10px 10px 16px;
+    border: 1px solid rgba(79,70,229,.14);
+    border-radius: 20px;
+    background: rgba(255,255,255,.94);
+    box-shadow: 0 18px 50px rgba(31,41,55,.2);
+    -webkit-backdrop-filter: blur(18px);
+    backdrop-filter: blur(18px);
+    opacity: 0;
+    transform: translateY(calc(120% + env(safe-area-inset-bottom)));
+    pointer-events: none;
+    transition: opacity .24s ease, transform .32s cubic-bezier(.2,.8,.2,1);
+  }
+
+  .mobileDownloadBar.isVisible{
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
+  }
+
+  .mobileDownloadBar div{
+    display: grid;
+    min-width: 0;
+  }
+
+  .mobileDownloadBar strong{
+    font: 750 15px/1.2 'Plus Jakarta Sans', ui-sans-serif, system-ui, sans-serif;
+  }
+
+  .mobileDownloadBar span{
+    margin-top: 2px;
+    color: var(--muted);
+    font-size: 12px;
+  }
+
+  .mobileDownloadBar .btn{
+    padding: 12px 15px;
+    font-size: 13px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce){
+  .mobileDownloadBar{
+    transition: none;
+  }
+}
+
 /* ═══════════════════════════════
    Dark Mode
    ═══════════════════════════════ */
@@ -1458,5 +1526,10 @@ h1, h2, h3{
 
   .checkNo{
     color: #444;
+  }
+
+  .mobileDownloadBar{
+    border-color: rgba(255,255,255,.12);
+    background: rgba(20,28,42,.94);
   }
 }

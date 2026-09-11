@@ -36,6 +36,51 @@ if (hamburger && headerNav) {
   });
 }
 
+// Keep mobile acquisition focused on the visitor's current platform.
+const userAgent = navigator.userAgent || "";
+const isIPadOS = navigator.platform === "MacIntel" && navigator.maxTouchPoints > 1;
+const visitorPlatform = /android/i.test(userAgent)
+  ? "android"
+  : (/iphone|ipad|ipod/i.test(userAgent) || isIPadOS)
+    ? "ios"
+    : "other";
+
+if (visitorPlatform !== "other") {
+  document.querySelectorAll(".downloadButtons [data-platform]").forEach(link => {
+    if (link.dataset.platform !== visitorPlatform) link.classList.add("isDeviceHidden");
+  });
+}
+
+const mobileDownloadBar = document.getElementById("mobileDownloadBar");
+const mobileDownloadLink = document.getElementById("mobileDownloadLink");
+const finalDownloadSection = document.getElementById("download");
+
+if (mobileDownloadBar && mobileDownloadLink) {
+  const storeDetails = visitorPlatform === "android"
+    ? {
+        href: "https://play.google.com/store/apps/details?id=com.thebrunix.tandem",
+        label: "Get for Android"
+      }
+    : visitorPlatform === "ios"
+      ? {
+          href: "https://apps.apple.com/us/app/tandem-for-couples/id6758865751",
+          label: "Get for iPhone"
+        }
+      : { href: "#download", label: "Get Tandem" };
+
+  mobileDownloadLink.href = storeDetails.href;
+  mobileDownloadLink.textContent = storeDetails.label;
+  document.body.classList.add("hasStickyDownload");
+
+  const updateDownloadBar = () => {
+    const finalCtaIsVisible = finalDownloadSection && finalDownloadSection.getBoundingClientRect().top < window.innerHeight * 0.85;
+    mobileDownloadBar.classList.toggle("isVisible", window.scrollY > 300 && !finalCtaIsVisible);
+  };
+
+  window.addEventListener("scroll", updateDownloadBar, { passive: true });
+  updateDownloadBar();
+}
+
 
 // Scroll fade-in animations — staggered per section
 const observerOptions = {
