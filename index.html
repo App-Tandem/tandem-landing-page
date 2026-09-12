@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Tandem | Couples Organizer App — Shared Todos, Calendar & Budget Planner</title>
+  <title>Tandem: Couples Organizer for Tasks, Calendar & Money</title>
   <meta name="description" content="Tandem is a free couples organizer for shared tasks, calendars, expenses, routines, and a meaningful Weekly Sync. Available on iOS and Android." />
   <meta name="keywords" content="couples organizer, couples planner app, shared to-do list, shared calendar for couples, couple budget app, relationship planner, couples app" />
   <meta name="robots" content="index,follow,max-image-preview:large" />
@@ -19,13 +19,15 @@
   <meta property="og:url" content="https://tandem-app.eu/" />
   <meta property="og:site_name" content="Tandem" />
   <meta property="og:locale" content="en_US" />
-  <meta property="og:image" content="https://tandem-app.eu/assets/finance-preview.png" />
-  <meta property="og:image:alt" content="Tandem app preview showing shared planning and finance features" />
+  <meta property="og:image" content="https://tandem-app.eu/assets/tandem-invite-preview.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="Tandem couples organizer app for shared life" />
 
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="Tandem | Couples Organizer App" />
   <meta name="twitter:description" content="Plan everyday life together with shared tasks, calendars, expenses, routines, and Weekly Sync. Free on iOS and Android." />
-  <meta name="twitter:image" content="https://tandem-app.eu/assets/finance-preview.png" />
+  <meta name="twitter:image" content="https://tandem-app.eu/assets/tandem-invite-preview.png" />
 
   <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png" />
   <link rel="apple-touch-icon" href="assets/apple-touch-icon.png" />
@@ -69,14 +71,17 @@
   <script type="application/ld+json">
     {
       "@context": "https://schema.org",
-      "@type": "SoftwareApplication",
+      "@type": "MobileApplication",
       "name": "Tandem",
-      "applicationCategory": "ProductivityApplication",
+      "applicationCategory": "LifestyleApplication",
       "operatingSystem": "iOS, Android",
       "url": "https://tandem-app.eu/",
       "description": "Tandem is a couples organizer app for shared to-do lists, calendar events, and budget tracking. Plan and organize life together.",
-      "image": "https://tandem-app.eu/assets/finance-preview.png",
-      "downloadUrl": "https://apps.apple.com/us/app/tandem-for-couples/id6758865751",
+      "image": "https://tandem-app.eu/assets/tandem-invite-preview.png",
+      "downloadUrl": [
+        "https://apps.apple.com/us/app/tandem-for-couples/id6758865751",
+        "https://play.google.com/store/apps/details?id=com.thebrunix.tandem"
+      ],
       "offers": {
         "@type": "Offer",
         "price": "0",
@@ -87,6 +92,12 @@
         "https://tandem-app.eu/assets/tandem-weekly-sync-v230.png",
         "https://tandem-app.eu/assets/tandem-calendar-v230.png"
       ],
+      "review": {
+        "@type": "Review",
+        "author": {"@type": "Person", "name": "coho16"},
+        "reviewBody": "Great app for busy couples, really helped organize daily tasks, minimized number of unnecessary fights.",
+        "reviewRating": {"@type": "Rating", "ratingValue": "5", "bestRating": "5", "worstRating": "1"}
+      },
       "publisher": {
         "@type": "Organization",
         "name": "Tandem",
@@ -132,7 +143,7 @@
         <span class="brandText">Tandem</span>
       </a>
       <nav class="headerNav" id="headerNav">
-        <a href="#features">Features</a>
+        <a href="features/">Features</a>
         <a href="#how-it-works">How It Works</a>
         <a href="guides/">Guides</a>
         <a href="about.html">About</a>
@@ -191,29 +202,29 @@
         </div>
 
         <div class="featureGrid">
-          <div class="featureCard">
+          <a class="featureCard" href="features/shared-todo-list-for-couples.html" data-feature="shared_todos" data-cta-location="homepage_feature_grid">
             <div class="featureIconWrap featureIconCoral">
               <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l0 20"/><path d="M2 12h20"/><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>
             </div>
             <h3>Shared Todos</h3>
             <p>Create and manage tasks together. Never forget what matters most to you both.</p>
-          </div>
+          </a>
 
-          <div class="featureCard">
+          <a class="featureCard" href="features/shared-calendar-for-couples.html" data-feature="shared_calendar" data-cta-location="homepage_feature_grid">
             <div class="featureIconWrap featureIconTeal">
               <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
             </div>
             <h3>Shared Calendar</h3>
             <p>Coordinate your schedules and never miss important dates. Stay perfectly in sync.</p>
-          </div>
+          </a>
 
-          <div class="featureCard">
+          <a class="featureCard" href="features/couple-expense-tracker.html" data-feature="shared_finances" data-cta-location="homepage_feature_grid">
             <div class="featureIconWrap featureIconOrange">
               <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="5" width="20" height="14" rx="2"/><line x1="2" y1="10" x2="22" y2="10"/></svg>
             </div>
             <h3>Shared Finances</h3>
             <p>Track shared expenses and budgets together. Full transparency, zero confusion.</p>
-          </div>
+          </a>
         </div>
       </div>
     </section>
@@ -334,7 +345,7 @@
                 <img src="assets/tandem-weekly-sync-v230.png" alt="Tandem Weekly Sync with a shared promise, mood and reflection prompts" class="previewImage" loading="lazy" decoding="async" width="1179" height="2556" />
               </picture>
             </div>
-            <p class="previewLabel">Weekly Sync</p>
+            <p class="previewLabel"><a href="features/weekly-relationship-check-in.html" data-feature="weekly_sync" data-cta-location="homepage_preview">Weekly Sync</a></p>
           </div>
           <div class="previewPhone">
             <div class="phoneMock">
@@ -505,6 +516,8 @@
         </a>
       </div>
       <nav class="footerNav">
+        <a href="features/">Features</a>
+        <span class="separator">&middot;</span>
         <a href="guides/">Guides</a>
         <span class="separator">&middot;</span>
         <a href="about.html">About</a>

@@ -609,6 +609,8 @@ h1, h2, h3{
   box-shadow: var(--shadow-sm);
   position: relative;
   overflow: hidden;
+  color: inherit;
+  text-decoration: none;
 }
 
 .featureCard::before{

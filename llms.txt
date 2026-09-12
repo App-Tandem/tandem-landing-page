@@ -19,6 +19,13 @@ Tandem is designed for couples (dating, engaged, married, or cohabiting) who wan
 - iOS: https://apps.apple.com/us/app/tandem-for-couples/id6758865751
 - Android: https://play.google.com/store/apps/details?id=com.thebrunix.tandem
 
+## Product Pages
+
+- [Shared To-Do List for Couples](https://tandem-app.eu/features/shared-todo-list-for-couples.html)
+- [Shared Calendar for Couples](https://tandem-app.eu/features/shared-calendar-for-couples.html)
+- [Couple Expense Tracker](https://tandem-app.eu/features/couple-expense-tracker.html)
+- [Weekly Relationship Check-In](https://tandem-app.eu/features/weekly-relationship-check-in.html)
+
 ## Guides
 
 Tandem publishes free, in-depth planning guides for couples:

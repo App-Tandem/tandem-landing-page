@@ -33,6 +33,9 @@ function localTargetExists(htmlFile, rawTarget) {
 const files = walk(root);
 const htmlFiles = files.filter((file) => file.endsWith(".html"));
 const styleFiles = files.filter((file) => file.endsWith(".css"));
+const titles = new Map();
+const descriptions = new Map();
+const indexableCanonicals = new Map();
 
 for (const file of htmlFiles) {
   const html = fs.readFileSync(file, "utf8");
@@ -43,12 +46,49 @@ for (const file of htmlFiles) {
   if (!/<link\s+rel="canonical"\s+href="https:\/\/tandem-app\.eu\//i.test(html)) addError(file, "missing canonical URL");
   if (!/js\/analytics\.js/.test(html)) addError(file, "missing privacy-conscious PostHog instrumentation");
 
+  const title = html.match(/<title>([^<]+)<\/title>/i)?.[1]?.trim();
+  const description = html.match(/<meta\s+name="description"\s+content="([^"]+)"/i)?.[1]?.trim();
+  const canonical = html.match(/<link\s+rel="canonical"\s+href="([^"]+)"/i)?.[1];
+  const h1Count = (html.match(/<h1(?:\s|>)/gi) || []).length;
+
+  if (h1Count !== 1) addError(file, `expected exactly one h1, found ${h1Count}`);
+  if (title) {
+    if (titles.has(title)) addError(file, `duplicate title also used by ${titles.get(title)}`);
+    titles.set(title, path.relative(root, file));
+  }
+  if (description) {
+    if (descriptions.has(description)) addError(file, `duplicate description also used by ${descriptions.get(description)}`);
+    descriptions.set(description, path.relative(root, file));
+  }
+  if (canonical && !/<meta\s+name="robots"\s+content="[^"]*noindex/i.test(html)) {
+    if (indexableCanonicals.has(canonical)) addError(file, `duplicate canonical also used by ${indexableCanonicals.get(canonical)}`);
+    indexableCanonicals.set(canonical, path.relative(root, file));
+  }
+
+  for (const match of html.matchAll(/<script\s+type="application\/ld\+json">([\s\S]*?)<\/script>/gi)) {
+    try {
+      JSON.parse(match[1]);
+    } catch (error) {
+      addError(file, `invalid JSON-LD: ${error.message}`);
+    }
+  }
+
   const ids = [...html.matchAll(/\sid="([^"]+)"/gi)].map((match) => match[1]);
   const duplicates = ids.filter((id, index) => ids.indexOf(id) !== index);
   if (duplicates.length) addError(file, `duplicate IDs: ${[...new Set(duplicates)].join(", ")}`);
 
   for (const match of html.matchAll(/\s(?:src|href)="([^"]+)"/gi)) {
     if (!localTargetExists(file, match[1])) addError(file, `broken local reference: ${match[1]}`);
+  }
+}
+
+const sitemapPath = path.join(root, "sitemap.xml");
+if (fs.existsSync(sitemapPath)) {
+  const sitemap = fs.readFileSync(sitemapPath, "utf8");
+  const sitemapUrls = new Set([...sitemap.matchAll(/<loc>([^<]+)<\/loc>/g)].map((match) => match[1]));
+  for (const [canonical, source] of indexableCanonicals) {
+    if (canonical.includes("/pair")) continue;
+    if (!sitemapUrls.has(canonical)) errors.push(`${source}: indexable canonical missing from sitemap: ${canonical}`);
   }
 }
 

@@ -21,13 +21,19 @@
   var path = window.location.pathname || "/";
   var params = new URLSearchParams(window.location.search);
   var isGuide = path.indexOf("/guides/") === 0 && path !== "/guides/" && path !== "/guides/index.html";
+  var isFeatureHub = path === "/features/" || path === "/features/index.html";
+  var isFeature = path.indexOf("/features/") === 0 && path !== "/features/" && path !== "/features/index.html";
   var pageType = isGuide
     ? "guide"
-    : path.indexOf("/pair") === 0
-      ? "invite"
-      : path === "/" || path === "/index.html" || path === "/hr/" || path === "/hr/index.html"
-        ? "homepage"
-        : "supporting";
+    : isFeature
+      ? "feature"
+      : isFeatureHub
+        ? "feature_hub"
+        : path.indexOf("/pair") === 0
+          ? "invite"
+          : path === "/" || path === "/index.html" || path === "/hr/" || path === "/hr/index.html"
+            ? "homepage"
+            : "supporting";
 
   function safeCampaignValue(name) {
     var value = params.get(name);
@@ -50,16 +56,38 @@
     return "desktop_or_other";
   }
 
-  var sharedProperties = {
+  function firstTouch() {
+    var storageKey = "tandem_landing_first_touch";
+    var current = {
+      first_entry_path: path,
+      first_referrer_host: referrerHost(),
+      first_utm_source: safeCampaignValue("utm_source"),
+      first_utm_medium: safeCampaignValue("utm_medium"),
+      first_utm_campaign: safeCampaignValue("utm_campaign")
+    };
+
+    try {
+      var stored = window.localStorage.getItem(storageKey);
+      if (stored) return JSON.parse(stored);
+      window.localStorage.setItem(storageKey, JSON.stringify(current));
+    } catch (_error) {
+      // Analytics must never interfere with navigation when storage is unavailable.
+    }
+
+    return current;
+  }
+
+  var sharedProperties = Object.assign({
     page_type: pageType,
     page_path: path,
+    page_title: document.title,
     platform: devicePlatform(),
     referrer_host: referrerHost(),
     utm_source: safeCampaignValue("utm_source"),
     utm_medium: safeCampaignValue("utm_medium"),
     utm_campaign: safeCampaignValue("utm_campaign"),
     utm_content: safeCampaignValue("utm_content")
-  };
+  }, firstTouch());
 
   window.posthog.capture("landing_page_viewed", sharedProperties);
 
@@ -86,6 +114,15 @@
         guide_path: path,
         destination: destination || "download_section"
       });
+    }
+
+    var featureName = link.getAttribute("data-feature");
+    if (featureName) {
+      window.posthog.capture("landing_feature_link_clicked", Object.assign({}, sharedProperties, {
+        feature_name: featureName,
+        link_path: link.pathname || href,
+        cta_location: link.getAttribute("data-cta-location") || "content"
+      }));
     }
   });
 })();

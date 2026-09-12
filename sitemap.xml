@@ -41,6 +41,36 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://tandem-app.eu/features/</loc>
+    <lastmod>2026-09-12</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://tandem-app.eu/features/shared-todo-list-for-couples.html</loc>
+    <lastmod>2026-09-12</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://tandem-app.eu/features/shared-calendar-for-couples.html</loc>
+    <lastmod>2026-09-12</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://tandem-app.eu/features/couple-expense-tracker.html</loc>
+    <lastmod>2026-09-12</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://tandem-app.eu/features/weekly-relationship-check-in.html</loc>
+    <lastmod>2026-09-12</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
     <loc>https://tandem-app.eu/guides/relationship-planning-system.html</loc>
     <lastmod>2026-05-01</lastmod>
     <changefreq>monthly</changefreq>
@@ -60,7 +90,7 @@
   </url>
   <url>
     <loc>https://tandem-app.eu/guides/shared-calendar-for-couples.html</loc>
-    <lastmod>2026-05-01</lastmod>
+    <lastmod>2026-09-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
@@ -72,7 +102,7 @@
   </url>
   <url>
     <loc>https://tandem-app.eu/guides/couple-budget-planning.html</loc>
-    <lastmod>2026-05-01</lastmod>
+    <lastmod>2026-09-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
@@ -168,7 +198,7 @@
   </url>
   <url>
     <loc>https://tandem-app.eu/guides/best-apps-for-couples.html</loc>
-    <lastmod>2026-07-08</lastmod>
+    <lastmod>2026-09-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
