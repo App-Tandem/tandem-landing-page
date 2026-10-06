@@ -224,7 +224,7 @@
     </div>
 
     <div id="code-section" style="display: none;">
-      <div class="instructions">After installing, return to this message and tap the invite link again. Tandem will connect you automatically after sign-up.</div>
+      <div class="instructions">Install Tandem and sign up. Tandem connects you automatically. On iPhone, tap “Allow Paste” when Tandem asks.</div>
       <details>
         <summary>Need the manual code?</summary>
         <div class="code-label" style="margin-top: 14px;">Your invite code</div>
@@ -265,6 +265,27 @@
       var validReferralSession = referralSession && /^ref_[a-z0-9_]{12,52}$/.test(referralSession) ? referralSession : null;
       var validInviteSession = inviteSession && /^inv_[a-z0-9_]{10,48}$/.test(inviteSession) ? inviteSession : null;
       var platform = /android/i.test(navigator.userAgent || "") ? "android" : "ios_or_other";
+      var inviteUrl = null;
+      var copyText = function (text, done) {
+        var fallback = function () {
+          var textarea = document.createElement("textarea");
+          textarea.value = text;
+          textarea.setAttribute("readonly", "");
+          textarea.style.position = "absolute";
+          textarea.style.left = "-9999px";
+          document.body.appendChild(textarea);
+          textarea.select();
+          var ok = false;
+          try { ok = document.execCommand("copy"); } catch (e) {}
+          document.body.removeChild(textarea);
+          done(ok);
+        };
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+          navigator.clipboard.writeText(text).then(function () { done(true); }).catch(fallback);
+          return;
+        }
+        fallback();
+      };
       var goalCopy = {
         calendar: "Join them to plan your week together.",
         tasks: "Join them to share tasks and the mental load.",
@@ -309,18 +330,46 @@
         openAppLink.addEventListener("click", function () {
           posthog.capture("invite_open_app_clicked", { platform: platform, invite_goal: goalCopy[goal] ? goal : null });
         });
+
+        // Deferred deep link: hand the invite to the fresh install.
+        // Android: Play Install Referrer. iOS + Android fallback: clipboard.
+        inviteUrl = "https://tandem-app.eu/pair?" + deepLinkParams.toString();
+        var referrer = new URLSearchParams(deepLinkParams);
+        referrer.set("utm_source", "tandem_invite");
+        document.getElementById("play-store-link").href =
+          "https://play.google.com/store/apps/details?id=com.thebrunix.tandem&referrer=" + encodeURIComponent(referrer.toString());
       } else {
         document.getElementById("no-code-section").style.display = "block";
       }
 
-      document.getElementById("store-link").addEventListener("click", function () {
+      // Copy the invite link inside the tap (browsers allow clipboard writes
+      // only during a user gesture), then open the store.
+      var copyInviteThenOpen = function (event, link) {
+        if (!inviteUrl) return;
+        event.preventDefault();
+        var opened = false;
+        var open = function () {
+          if (opened) return;
+          opened = true;
+          window.location.href = link.href;
+        };
+        setTimeout(open, 600);
+        copyText(inviteUrl, function (ok) {
+          posthog.capture("invite_link_copied_for_install", { platform: platform, copied: ok });
+          open();
+        });
+      };
+
+      document.getElementById("store-link").addEventListener("click", function (event) {
         posthog.capture("invite_store_cta_clicked", { platform: "ios", has_invite_code: Boolean(normalizedCode) });
         if (validReferralSession) posthog.capture("referral_store_cta_clicked", { referral_session_id: validReferralSession, platform: "ios" });
+        copyInviteThenOpen(event, this);
       });
 
-      document.getElementById("play-store-link").addEventListener("click", function () {
+      document.getElementById("play-store-link").addEventListener("click", function (event) {
         posthog.capture("invite_store_cta_clicked", { platform: "android", has_invite_code: Boolean(normalizedCode) });
         if (validReferralSession) posthog.capture("referral_store_cta_clicked", { referral_session_id: validReferralSession, platform: "android" });
+        copyInviteThenOpen(event, this);
       });
 
       if (platform === "android") {
@@ -331,25 +380,11 @@
       document.getElementById("copy-code").addEventListener("click", function () {
         if (!normalizedCode) return;
         var button = document.getElementById("copy-code");
-        var copied = function () {
+        copyText(normalizedCode, function (ok) {
+          if (!ok) return;
           button.textContent = "Code copied";
           posthog.capture("invite_code_copied", { platform: platform });
-        };
-
-        if (navigator.clipboard && navigator.clipboard.writeText) {
-          navigator.clipboard.writeText(normalizedCode).then(copied).catch(function () {});
-          return;
-        }
-
-        var textarea = document.createElement("textarea");
-        textarea.value = normalizedCode;
-        textarea.setAttribute("readonly", "");
-        textarea.style.position = "absolute";
-        textarea.style.left = "-9999px";
-        document.body.appendChild(textarea);
-        textarea.select();
-        if (document.execCommand("copy")) copied();
-        document.body.removeChild(textarea);
+        });
       });
     })();
   </script>
