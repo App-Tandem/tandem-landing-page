@@ -37,94 +37,150 @@
 <body>
   <main>
     <h1>Privacy Policy</h1>
-    <p class="muted"><em>Effective Date: February 1, 2026</em></p>
+    <p class="muted"><em>Effective date: November 4, 2026 · Previous version: February 1, 2026</em></p>
 
     <p>
-      Tandem ("we," "us," "our") operates the Tandem mobile application. This Privacy Policy
-      explains how we collect, use, disclose, and safeguard your information.
+      This Privacy Policy explains how personal data is processed when you use the Tandem mobile app
+      (iOS and Android), the website tandem-app.eu, and related emails and notifications (together, the
+      "Service"). We wrote it to be read, not skimmed: it lists every category of data we process, why,
+      on what legal basis, with whom it is shared, how long it is kept, and what rights you have.
     </p>
 
-    <h2>1. Information We Collect</h2>
-    <ul>
-      <li><strong>Account Information:</strong> email and password used to create and access your account.</li>
-      <li><strong>Profile Information:</strong> display name, profile photo, theme preferences, currency, week start, and notification/haptics settings.</li>
-      <li><strong>App Content:</strong> shared and personal todos, calendar events, and finance entries (amounts, categories, dates, owners).</li>
-      <li><strong>Pairing Data:</strong> pairing status and related identifiers to connect accounts.</li>
-      <li><strong>Feedback:</strong> issue/feature reports, message details, attachments you choose to upload, app version, and device platform.</li>
-      <li><strong>Analytics Data:</strong> usage analytics and device/app metadata collected via PostHog.</li>
-    </ul>
-
-    <h2>2. How We Use Information</h2>
-    <p>We use information to:</p>
-    <ul>
-      <li>Provide and operate the service (authentication, syncing, pairing, content storage).</li>
-      <li>Personalize the app (preferences and settings).</li>
-      <li>Provide support and respond to feedback.</li>
-      <li>Analyze usage and improve the app.</li>
-    </ul>
-
-    <h2>3. Legal Bases (if applicable)</h2>
-    <p>We process data based on:</p>
-    <ul>
-      <li><strong>Contract:</strong> to provide the service you request.</li>
-      <li><strong>Consent:</strong> where you choose to provide optional data or allow analytics.</li>
-      <li><strong>Legitimate Interests:</strong> to improve app reliability and performance.</li>
-    </ul>
-
-    <h2>4. Sharing and Disclosure</h2>
-    <p>We share data with service providers and processors, including:</p>
-    <ul>
-      <li>Supabase (authentication, database, file storage).</li>
-      <li>RevenueCat (subscription management).</li>
-      <li>PostHog (analytics).</li>
-    </ul>
-    <p>We may also disclose information to comply with legal obligations or protect our rights.</p>
-
-    <h2>5. Data Retention</h2>
-    <ul>
-      <li><strong>Account and app content:</strong> retained until you delete your account.</li>
-      <li><strong>Feedback and attachments:</strong> retained as long as needed for support and product improvement, then deleted.</li>
-    </ul>
-    <p>We may retain limited data in backups for a short period after deletion.</p>
-
-    <h2>6. Your Rights and Choices</h2>
+    <h2 id="controller">1. Who is responsible (controller)</h2>
     <p>
-      Depending on your location, you may request to access, correct, delete, or export your data.
-      You can also opt out of analytics where available. To exercise rights, contact us at
-      <a href="mailto:bruno.petkovic.business@gmail.com">bruno.petkovic.business@gmail.com</a>.
+      The controller under the EU General Data Protection Regulation (GDPR) is:<br />
+      <strong>[LEGAL NAME OF OPERATOR — e.g. "Bruno Petković" or company/obrt name]</strong><br />
+      [Street and number], [Postcode] [City], Croatia<br />
+      [OIB / company registration number]<br />
+      Email: <a href="mailto:privacy@tandem-app.eu">privacy@tandem-app.eu</a> · Support: <a href="mailto:support@tandem-app.eu">support@tandem-app.eu</a>
+    </p>
+    <p>We have not appointed a data protection officer because we are not legally required to. Questions about privacy go to the email above.</p>
+
+    <h2 id="data">2. What data we process</h2>
+    <ul>
+      <li><strong>Account data:</strong> email address; password (stored only as a hash by our authentication provider) or, if you use Sign in with Apple or Google, the identifier and email the provider shares with us (Apple may give us a private relay email).</li>
+      <li><strong>Profile data:</strong> display name, optional profile photo, language, currency, week start, theme, notification, haptics and widget settings, time zone.</li>
+      <li><strong>Couple and pairing data:</strong> which account is paired with which, invite codes and links, pairing status and dates.</li>
+      <li><strong>Content you create:</strong> to-dos and lists (including optional images), calendar events and reminders, expenses and income entries (amounts, currency, categories, split, dates, who paid), recurring items, custom categories, Weekly Sync answers and notes, reactions and activity history.</li>
+      <li><strong>Device calendar data (only if you turn on calendar sync):</strong> for the calendars you choose, the event title, description, start and end time, all-day flag, calendar name and colour are uploaded so that your partner can see them in Tandem. You can turn this off at any time in Settings; synced events are then removed.</li>
+      <li><strong>Subscription data:</strong> whether you or your partner has Premium, product, trial and renewal status, store (App Store / Google Play), purchase and expiry dates and an anonymous app user ID. <em>We never receive your card or payment details</em>; payment is processed by Apple or Google.</li>
+      <li><strong>Notification data:</strong> push notification tokens, delivery status, quiet hours and your notification preferences.</li>
+      <li><strong>Email data:</strong> service and reminder emails sent to you (for example trial-ending or Founding offer reminders) and their delivery status.</li>
+      <li><strong>Feedback and support:</strong> what you write to us, screenshots or files you attach, app version and device platform. Feature ideas you post on our public feedback board (Featurebase) are visible to other visitors.</li>
+      <li><strong>Usage analytics:</strong> app events (for example "expense added", "paywall shown"), screen names, app version, device model, operating system, language, country derived from IP, and a pseudonymous user ID. We do not use session recording, advertising IDs or cross-app tracking.</li>
+      <li><strong>Diagnostics:</strong> crash reports and error logs (stack traces, device and app version). We configured crash reporting not to send IP-based personal data, screenshots or default personal information.</li>
+      <li><strong>Website data:</strong> anonymous page and click statistics on tandem-app.eu (see section 10).</li>
+    </ul>
+    <p>
+      We do not ask for and do not want special categories of data (such as health, religion or sexual orientation).
+      Please do not enter them into free-text fields. Finance entries are your own records; Tandem is not connected to your bank.
     </p>
 
-    <h2>7. Security</h2>
+    <h2 id="purposes">3. Why we process it and on what legal basis</h2>
+    <ul>
+      <li><strong>Providing the Service</strong> (account, sync, pairing, sharing with your partner, reminders you set, widgets, calendar sync, Premium features) — <em>performance of a contract</em> (Art. 6(1)(b) GDPR).</li>
+      <li><strong>Subscriptions and the Founding offer</strong> (checking entitlement, granting Premium to both partners, trial and renewal handling) — <em>contract</em> (Art. 6(1)(b)).</li>
+      <li><strong>Service messages</strong> (security, account, pairing, trial-ending and subscription notices) — <em>contract</em> and <em>legal obligation</em> where consumer law requires notice (Art. 6(1)(b), (c)).</li>
+      <li><strong>Offers by email to existing users</strong> (for example the Founding Couple offer) — <em>legitimate interest</em> in telling existing users about our own similar services (Art. 6(1)(f) GDPR and the e-privacy "existing customer" rule). Every such email has a one-click unsubscribe and you can object at any time.</li>
+      <li><strong>Push notifications</strong> — your <em>consent</em> given in the operating-system prompt (Art. 6(1)(a)); you can withdraw it in system settings or per type in Tandem.</li>
+      <li><strong>Product analytics and diagnostics</strong> (understanding which features are used, fixing crashes) — <em>legitimate interest</em> in a reliable and useful product (Art. 6(1)(f)). You can object at any time by switching off analytics in Settings or by emailing us.</li>
+      <li><strong>Support and feedback</strong> — <em>contract</em> and <em>legitimate interest</em> in improving Tandem.</li>
+      <li><strong>Security and abuse prevention, enforcing our Terms, legal claims</strong> — <em>legitimate interest</em> (Art. 6(1)(f)).</li>
+      <li><strong>Accounting and tax records</strong> (where they exist) — <em>legal obligation</em> (Art. 6(1)(c)).</li>
+    </ul>
+    <p>We do not sell personal data, do not use it for advertising profiles and do not make decisions with legal or similarly significant effect based solely on automated processing.</p>
+
+    <h2 id="partner">4. What your partner sees</h2>
     <p>
-      We use reasonable administrative, technical, and organizational measures to protect your data.
-      However, no method of transmission or storage is 100% secure.
+      Tandem is a shared app. Once you pair, your partner can see shared content: shared to-dos and lists, shared calendar events
+      (including events synced from your device calendar, if you turn that on), shared expenses and balances, Weekly Sync answers
+      you share, and your display name, photo and Premium status. Personal (private) items are not shown to your partner.
+      If you unpair, shared content created before unpairing may remain visible to the other person, as it is also their record;
+      you can delete items you created before unpairing.
+    </p>
+    <p>
+      If you enter information about your partner or other people (for example in an expense note), you are responsible for
+      having a right to do so. Please keep such notes minimal.
     </p>
 
-    <h2>8. International Transfers</h2>
-    <p>Your data may be processed in countries other than your own. We use appropriate safeguards where required.</p>
-
-    <h2>9. Children</h2>
-    <p>Tandem is not intended for anyone under 18. We do not knowingly collect data from children.</p>
-
-    <h2>10. Cookies &amp; Tracking</h2>
+    <h2 id="processors">5. Who we share data with</h2>
+    <p>We use these service providers (processors) under data processing agreements. They may only use data to provide their service to us.</p>
+    <ul>
+      <li><strong>Supabase Inc.</strong> — authentication, database, file storage, server functions. Data hosted in [CONFIRM REGION, e.g. EU (Frankfurt)].</li>
+      <li><strong>RevenueCat Inc.</strong> (USA) — subscription status and receipts validation.</li>
+      <li><strong>PostHog Inc.</strong> — product analytics, hosted in the EU (eu.posthog.com).</li>
+      <li><strong>Functional Software Inc. (Sentry)</strong> — crash and error reporting, hosted in the EU (Germany).</li>
+      <li><strong>Resend Inc.</strong> (USA) — sending emails.</li>
+      <li><strong>Expo / 650 Industries Inc.</strong> (USA), <strong>Apple</strong> and <strong>Google</strong> — delivering push notifications.</li>
+      <li><strong>Google LLC (Google Workspace)</strong> — our support mailbox.</li>
+      <li><strong>Featurebase</strong> — public feature-request board (only what you post there).</li>
+      <li><strong>Apple and Google</strong> — as app stores they process purchases, refunds and sign-in as independent controllers under their own privacy policies.</li>
+    </ul>
     <p>
-      The mobile app does not use cookies. We use analytics (PostHog) that may collect device and usage
-      identifiers. You can opt out where available in the app or by contacting us.
+      We may disclose data if we are legally required to (for example a court order), to protect the rights and safety of users
+      or others, or as part of a sale or restructuring of the Service, in which case this policy continues to apply.
     </p>
 
-    <h2>11. Changes to This Policy</h2>
+    <h2 id="transfers">6. International transfers</h2>
     <p>
-      We may update this policy from time to time. We will notify you in-app or by other reasonable means.
-      The Effective Date above reflects the latest version.
+      Some providers are based in, or access data from, the United States. Where data leaves the EU/EEA we rely on the
+      EU–U.S. Data Privacy Framework for certified providers and/or the European Commission's Standard Contractual Clauses,
+      plus the provider's additional safeguards. You can ask us for a copy of the relevant safeguards.
     </p>
 
-    <h2>12. Contact</h2>
-    <p>Email: <a href="mailto:bruno.petkovic.business@gmail.com">bruno.petkovic.business@gmail.com</a></p>
+    <h2 id="retention">7. How long we keep data</h2>
+    <ul>
+      <li><strong>Account, profile and content:</strong> as long as your account exists. When you delete your account, your personal data and the content you created are deleted from our live systems within 30 days; shared items that also belong to your partner are anonymised (your name removed) or deleted.</li>
+      <li><strong>Device calendar data:</strong> until you turn off calendar sync, remove the calendar, or delete your account.</li>
+      <li><strong>Backups:</strong> deleted data may remain in encrypted backups for up to [7–30, CONFIRM] days until they are overwritten.</li>
+      <li><strong>Analytics:</strong> up to 24 months, then deleted or aggregated.</li>
+      <li><strong>Crash reports:</strong> up to 90 days.</li>
+      <li><strong>Support emails and feedback:</strong> up to 24 months after the conversation ends.</li>
+      <li><strong>Email delivery logs and push logs:</strong> up to 12 months.</li>
+      <li><strong>Records we must keep by law:</strong> for the statutory period.</li>
+    </ul>
 
+    <h2 id="rights">8. Your rights</h2>
+    <p>Under the GDPR you have the right to:</p>
+    <ul>
+      <li>access your data and get a copy;</li>
+      <li>correct inaccurate data;</li>
+      <li>delete your data ("right to be forgotten") — in the app via <em>Settings → Delete account</em>, or on the web at <a href="support.html#delete-account">tandem-app.eu/support.html#delete-account</a>;</li>
+      <li>restrict processing;</li>
+      <li>data portability (receive your data in a common machine-readable format);</li>
+      <li><strong>object</strong> to processing based on legitimate interest, including analytics and offer emails, and to direct marketing at any time;</li>
+      <li>withdraw consent at any time, without affecting earlier processing;</li>
+      <li>lodge a complaint with a supervisory authority — in Croatia the <em>Agencija za zaštitu osobnih podataka (AZOP)</em>, Selska cesta 136, 10000 Zagreb, <a href="https://azop.hr">azop.hr</a> — or the authority where you live or work.</li>
+    </ul>
+    <p>Email <a href="mailto:privacy@tandem-app.eu">privacy@tandem-app.eu</a>. We answer within one month (extendable by two months for complex requests) and may ask you to confirm your identity from the email linked to your account.</p>
+    <p><strong>California and other US residents:</strong> we do not sell or share personal information for cross-context behavioural advertising. You can use the rights above regardless of where you live.</p>
+
+    <h2 id="security">9. Security</h2>
     <p>
-      <a href="terms.html">View Terms of Service</a>
-      <span class="separator">•</span>
-      <a href="index.html">Back to Tandem</a>
+      Data is encrypted in transit (TLS) and at rest by our hosting provider. Access to your content is limited by database
+      row-level security to you and your paired partner. Only the operator has administrative access, protected by
+      two-factor authentication. No system is perfectly secure; if a personal data breach is likely to put you at risk,
+      we will notify you and the supervisory authority as the law requires.
+    </p>
+
+    <h2 id="website">10. Website and cookies</h2>
+    <p>
+      The website tandem-app.eu uses privacy-friendly analytics (PostHog, EU hosting) configured <strong>without cookies
+      and without storing anything on your device</strong>, with no session recording and no advertising. It counts page views and clicks
+      on store buttons in a way that does not identify you. The mobile app does not use cookies.
+    </p>
+
+    <h2 id="children">11. Children</h2>
+    <p>Tandem is for adults (18+). We do not knowingly process data of children. If you believe a child has created an account, contact us and we will delete it.</p>
+
+    <h2 id="changes">12. Changes</h2>
+    <p>
+      We will update this policy when the Service or the law changes. For material changes we will tell you in the app or by email
+      before they take effect. The effective date above shows the current version.
+    </p>
+
+    <p class="muted">
+      <a href="terms.html">Terms of Service</a><span class="separator">•</span><a href="support.html">Support</a><span class="separator">•</span><a href="index.html">Back to Tandem</a>
     </p>
   </main>
   <script src="js/analytics.js"></script>
