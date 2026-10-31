@@ -19,7 +19,9 @@
     capture_pageview: false,
     capture_pageleave: false,
     disable_session_recording: true,
-    persistence: "localStorage+cookie"
+    persistence: "memory",
+    disable_persistence: true,
+    ip: false
   });
 
   var path = window.location.pathname || "/";
@@ -61,7 +63,6 @@
   }
 
   function firstTouch() {
-    var storageKey = "tandem_landing_first_touch";
     var current = {
       first_entry_path: path,
       first_referrer_host: referrerHost(),
@@ -70,14 +71,8 @@
       first_utm_campaign: safeCampaignValue("utm_campaign")
     };
 
-    try {
-      var stored = window.localStorage.getItem(storageKey);
-      if (stored) return JSON.parse(stored);
-      window.localStorage.setItem(storageKey, JSON.stringify(current));
-    } catch (_error) {
-      // Analytics must never interfere with navigation when storage is unavailable.
-    }
-
+    // No device storage: the site runs without cookies or localStorage so it
+    // needs no consent banner (ePrivacy Art. 5(3)). First touch = this page view.
     return current;
   }
 
