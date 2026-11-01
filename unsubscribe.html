@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Unsubscribe | Tandem</title>
+  <!-- TANAA-180: unsubscribe from Tandem offer emails. No analytics on this
+       page: the URL carries the user id and token. -->
+  <meta name="robots" content="noindex,nofollow" />
+  <meta name="referrer" content="no-referrer" />
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png" />
+  <style>
+    body{ margin:0; padding:40px 18px; font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial; line-height:1.6; color:#0b1220; background:#ffffff; }
+    main{ max-width:560px; margin:0 auto; }
+    a{ color:inherit; text-decoration:underline; text-underline-offset:3px; }
+    .muted{ color:#5b6474; }
+    .card{ border:1px solid #e6e9ef; border-radius:14px; padding:16px 18px; background:#fbfcfe; }
+    button{ font:inherit; font-weight:700; color:#fff; background:#6256D9; border:0; border-radius:12px; padding:12px 20px; cursor:pointer; }
+    button[disabled]{ opacity:.6; cursor:default; }
+  </style>
+</head>
+<body>
+  <main>
+    <h1>Unsubscribe from offer emails</h1>
+    <div class="card">
+      <p id="text">Click the button to stop Tandem offer emails (for example the Founding Couple offer). You will still get service emails, such as a notice before a trial ends.</p>
+      <p><button id="btn" type="button">Unsubscribe</button></p>
+    </div>
+    <p class="muted">Problems? Write to <a href="mailto:support@tandem-app.eu?subject=Unsubscribe">support@tandem-app.eu</a>. · <a href="privacy.html">Privacy Policy</a></p>
+  </main>
+  <script>
+    (function () {
+      var ENDPOINT = "https://rwhvqftrphpsngmprsxg.supabase.co/functions/v1/email-unsubscribe";
+      var params = new URLSearchParams(location.search);
+      var u = params.get("u") || "";
+      var t = params.get("t") || "";
+      var btn = document.getElementById("btn");
+      var text = document.getElementById("text");
+      function show(message, done) {
+        text.textContent = message;
+        btn.disabled = true;
+        if (done) btn.style.display = "none";
+      }
+      if (!u || !t) {
+        show("This link is not complete. Use the link from the email, or write to support@tandem-app.eu.", true);
+        return;
+      }
+      btn.addEventListener("click", function () {
+        btn.disabled = true;
+        fetch(ENDPOINT + "?u=" + encodeURIComponent(u) + "&t=" + encodeURIComponent(t), { method: "POST" })
+          .then(function (res) {
+            if (res.ok) show("Done. You will not get Tandem offer emails anymore.", true);
+            else if (res.status === 400) show("This link is not valid. Write to support@tandem-app.eu and we will unsubscribe you.", true);
+            else { text.textContent = "Something went wrong. Please try again in a minute."; btn.disabled = false; }
+          })
+          .catch(function () { text.textContent = "No connection. Please try again."; btn.disabled = false; });
+      });
+    })();
+  </script>
+</body>
+</html>
