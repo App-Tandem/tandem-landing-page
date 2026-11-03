@@ -325,19 +325,34 @@
         if (validInviteSession) deepLinkParams.set("sid", validInviteSession);
         var openAppLink = document.getElementById("open-app-link");
         document.getElementById("invite-card").classList.add("has-open-app");
-        openAppLink.href = "tandem://pair?" + deepLinkParams.toString();
-        openAppLink.style.display = "inline-block";
-        openAppLink.addEventListener("click", function () {
-          posthog.capture("invite_open_app_clicked", { platform: platform, invite_goal: goalCopy[goal] ? goal : null });
-        });
-
         // Deferred deep link: hand the invite to the fresh install.
         // Android: Play Install Referrer. iOS + Android fallback: clipboard.
         inviteUrl = "https://tandem-app.eu/pair?" + deepLinkParams.toString();
         var referrer = new URLSearchParams(deepLinkParams);
         referrer.set("utm_source", "tandem_invite");
-        document.getElementById("play-store-link").href =
+        var playStoreUrl =
           "https://play.google.com/store/apps/details?id=com.thebrunix.tandem&referrer=" + encodeURIComponent(referrer.toString());
+        document.getElementById("play-store-link").href = playStoreUrl;
+
+        // Android: a bare tandem:// link is blocked by many in-app browsers
+        // (WhatsApp, Messenger, Instagram) and does nothing when the app is
+        // missing. An intent:// link opens the app when installed and falls
+        // back to the Play Store (with the invite referrer) when not (TANAA-217).
+        var openAppLinkType = platform === "android" ? "intent" : "scheme";
+        openAppLink.href = platform === "android"
+          ? "intent://pair?" + deepLinkParams.toString() +
+            "#Intent;scheme=tandem;package=com.thebrunix.tandem;S.browser_fallback_url=" +
+            encodeURIComponent(playStoreUrl) + ";end"
+          : "tandem://pair?" + deepLinkParams.toString();
+        openAppLink.style.display = "inline-block";
+        openAppLink.addEventListener("click", function () {
+          posthog.capture("invite_open_app_clicked", {
+            platform: platform,
+            invite_goal: goalCopy[goal] ? goal : null,
+            link_type: openAppLinkType,
+            invite_session_id: validInviteSession,
+          });
+        });
       } else {
         document.getElementById("no-code-section").style.display = "block";
       }
