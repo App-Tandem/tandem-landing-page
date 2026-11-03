@@ -4,7 +4,10 @@
     "target": {
       "namespace": "android_app",
       "package_name": "com.thebrunix.tandem",
-      "sha256_cert_fingerprints": ["FF:D5:9C:DE:24:69:71:DF:11:11:3F:B6:9E:D3:FF:C8:01:1D:CB:41:75:A9:D1:73:ED:6D:78:57:8A:B6:BE:CD"]
+      "sha256_cert_fingerprints": [
+        "FF:D5:9C:DE:24:69:71:DF:11:11:3F:B6:9E:D3:FF:C8:01:1D:CB:41:75:A9:D1:73:ED:6D:78:57:8A:B6:BE:CD",
+        "78:87:46:25:72:C3:75:49:C8:24:D2:DC:43:89:47:7C:4E:2D:7D:A1:07:E9:43:AB:6D:3C:46:7F:DC:91:7C:6E"
+      ]
     }
   }
 ]
