@@ -37,6 +37,10 @@ const titles = new Map();
 const descriptions = new Map();
 const indexableCanonicals = new Map();
 
+// Pages that must NOT load analytics (their URL carries personal data, e.g. a
+// user id and token). Each must also be noindex. Keep this list short.
+const noAnalyticsPages = new Set(["unsubscribe.html"]);
+
 for (const file of htmlFiles) {
   const html = fs.readFileSync(file, "utf8");
 
@@ -44,7 +48,13 @@ for (const file of htmlFiles) {
   if (!/<title>[^<]+<\/title>/i.test(html)) addError(file, "missing non-empty title");
   if (!/<meta\s+name="description"\s+content="[^"]+"\s*\/?>/i.test(html)) addError(file, "missing meta description");
   if (!/<link\s+rel="canonical"\s+href="https:\/\/tandem-app\.eu\//i.test(html)) addError(file, "missing canonical URL");
-  if (!/js\/analytics\.js/.test(html)) addError(file, "missing privacy-conscious PostHog instrumentation");
+  const relativeFile = path.relative(root, file);
+  if (noAnalyticsPages.has(relativeFile)) {
+    if (/js\/analytics\.js|posthog/i.test(html)) addError(file, "analytics is not allowed on this page (URL carries personal data)");
+    if (!/<meta\s+name="robots"\s+content="[^"]*noindex/i.test(html)) addError(file, "no-analytics page must be noindex");
+  } else if (!/js\/analytics\.js/.test(html)) {
+    addError(file, "missing privacy-conscious PostHog instrumentation");
+  }
 
   const title = html.match(/<title>([^<]+)<\/title>/i)?.[1]?.trim();
   const description = html.match(/<meta\s+name="description"\s+content="([^"]+)"/i)?.[1]?.trim();
